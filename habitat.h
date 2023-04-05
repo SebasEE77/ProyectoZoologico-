@@ -7,7 +7,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <algorithm>
-#include "zoologico.h"
+#include "animales.h"
 
 using std::cout;
 using std::string;
@@ -18,13 +18,13 @@ using std::unordered_map;
 using std::make_pair;
 using std::vector;
 
-class habitat: public zoologico {
+class habitat: public animales {
 public:
     habitat() = default;
     habitat(string tipoHabitat);
 
 
-
+    string getHabitat();
 };
 
 

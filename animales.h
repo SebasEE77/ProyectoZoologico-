@@ -7,7 +7,6 @@
 #include <iostream>
 #include <unordered_map>
 #include <algorithm>
-#include "zoologico.h"
 
 using std::cout;
 using std::string;
@@ -18,20 +17,43 @@ using std::unordered_map;
 using std::make_pair;
 using std::vector;
 
-class animales: public zoologico {
-protected:
-    string tipoDieta;
-    vector<animales*> vectorCarnivoro;
-    vector<animales*> vectorOmnivoro;
-    vector<animales*> vectorHerbivoro;
+class animales {
+public:
+    //string accionAnimal;
+    string nombreZoologico;
+    int idAnimal;
+    string nombre;
+    string especie;
+    int edad;
+    string tipoAlimentacion;
+    string estadoSalud;
+    string tipoHabitat;
+    vector<animales*> vectorAnimales;
+    vector<animales*> vectorHabitat;
 public:
     animales() = default;
-    animales(int id, string nombre,string especie, string tipoHabitat,
+    animales(string nombreZoologico);
+    animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud);
-    void accionDelAnimal(int idAnimal, int accionAnimal,string tipoDieta);
-    void agregarComidaVectores(string tipoDieta);
+    //void accionDelAnimal(int idAnimal, int accionAnimal);
+//    void agregarComidaCarnivoro(string tipoDieta);
+//    void agregarComidaHerbivoro(string tipoDieta);
+//    void agregarComidaOmnivoro(string tipoDieta);
+    void agregarComida(string nombre, string tipoAlimentacion, string comida);
+    void mostrarInfo();
+    void agregarZoologico(string nombre, string especie, string tipoHabitat,
+                          int edad, string tipoAlimentacion, string estadoSalud);
+    void agregarZoologico(string tipoHabitat);
+    //void agregarComidaCarnivoro(int idAnimal, string tipoAlimentacion, string tipoDieta);
 
-    string getTipoDieta();
+
+    int getIdAnimal();
+    string getEspecie();
+    int getEdad();
+    string getTipoAlimentacion();
+    string getNombre();
+    string getEstadoSalud();
+    string getHabitat();
 };
 
 

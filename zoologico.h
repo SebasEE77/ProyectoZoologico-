@@ -9,6 +9,8 @@
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
+#include "animales.h"
+
 
 using std::cout;
 using std::string;
@@ -21,18 +23,6 @@ using std::vector;
 
 class zoologico {
 
-protected:
-    string nombreZoologico;
-    string nombre;
-    string especie;
-    int edad;
-    string tipoAlimentacion;
-    string estadoSalud;
-    int idAnimal;
-    string tipoHabitat;
-    vector<zoologico*> vectorHabitat;
-    vector<zoologico*> vectorAnimales;
-
 public:
     zoologico() = default;
     zoologico(string nombreZoologico);
@@ -40,15 +30,6 @@ public:
     void mostrarInfo();
     void agregarZoologico(string nombre, string especie, string tipoHabitat,
                           int edad, string tipoAlimentacion, string estadoSalud);
-
-    int getIdAnimal();
-    string getHabitat();
-    string getEspecie();
-    int getEdad();
-    string getTipoAlimentacion();
-    string getNombre();
-    string getEstadoSalud();
-
 
 };
 

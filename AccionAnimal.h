@@ -29,7 +29,8 @@ protected:
 public:
     AccionAnimal() = default;
     AccionAnimal(string comer, string dormir, string jugar, int numHorasDormir,int accionAnimal);
-    };
+    void accionDelAnimal(int idAnimal, int accionAnimal);
+};
 
 
 #endif //ZOOLOGICO_ACCIONANIMAL_H

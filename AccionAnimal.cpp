@@ -12,33 +12,30 @@ AccionAnimal::AccionAnimal(string comer, string dormir, string jugar, int numHor
     this->accionAnimal = accionAnimal;
 }
 
-void animales::accionDelAnimal(int idAnimal, int accionAnimal, string tipoDieta) {
-    vector<zoologico*>::iterator itVectorAnimales;
-    vector<animales*>::iterator itVectordieta;
-    string comida;
-    this->vectorCarnivoro.push_back(new dieta(tipoDieta));
-    for(itVectorAnimales = this->vectorAnimales.begin(); itVectorAnimales != this->vectorAnimales.end(); ++itVectorAnimales) {
-        zoologico *pAnimales = *itVectorAnimales;
-        cout <<"holaaaa"<<endl;
-        if(idAnimal == pAnimales->getIdAnimal()){
-            if(accionAnimal == 1 and pAnimales->getTipoAlimentacion() == "carnivoro"){
-                cout << "Esta es la comida que puede comer: "<<endl;
-                for (itVectordieta = this->vectorCarnivoro.begin(); itVectordieta != this->vectorCarnivoro.end(); ++itVectordieta) {
-                    animales *pDieta = *itVectordieta;
-                    cout << "Dieta: "<<pDieta->getTipoDieta()<<endl;
-                }
-                cout << "Que comida le quisieras dar?"<<endl;
-                cin>>comida;
-                if(comida == getTipoDieta()){
-                    cout << "Ya le diste la comida"<<endl;
-                }else{
-                    cout << "El animal no come ese tipo de comida"<<endl;
-                }
-            }
-        }else{
-            cout<< "No hay ningun animal con ese ID"<<endl;
-        }
-    }
-
-
-}
+//void animales::accionDelAnimal(int idAnimal, int accionAnimal) {
+//    vector<zoologico*>::iterator itVectorAnimal;
+//    vector<animales*>::iterator itVectordieta;
+//    string comida;
+//    for (itVectorAnimal = this->vectorAnimales.begin(); itVectorAnimal != this->vectorAnimales.end(); ++itVectorAnimal) {
+//        zoologico *pAnimales = *itVectorAnimal;
+//        if (idAnimal == pAnimales->getIdAnimal()) {
+//            if (accionAnimal == 1 and pAnimales->getTipoAlimentacion() == "carnivoro") {
+//                cout << "Esta es la comida que puede comer: " << endl;
+//                for (itVectordieta = this->vectorCarnivoro.begin();
+//                     itVectordieta != this->vectorCarnivoro.end(); ++itVectordieta) {
+//                    animales *pDieta = *itVectordieta;
+//                    cout << "Dieta: " << pDieta->getTipoDieta() << endl << endl;
+//                    cout << "Que comida le quisieras dar?" << endl;
+//                    cin >> comida;
+//                    if (comida == pDieta->getTipoDieta()) {
+//                        cout << "Ya le diste " << comida << endl;
+//                    } else {
+//                        cout << "El animal no come ese tipo de comida" << endl;
+//                    }
+//                }
+//            }
+//        } else {
+//            cout << "No hay ningun animal con ese ID" << endl;
+//        }
+//    }
+//}
