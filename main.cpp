@@ -94,7 +94,7 @@ void cuartaOpcion(dieta *pDieta) {
         getline(cin >> std::ws, tipoDieta);
         pDieta->agregarComida(id, tipoAlimentacion, tipoDieta);
     }
-    if(tipoAlimentacion == "Herbivoro" || tipoAlimentacion == "herbivoro") {
+    else if(tipoAlimentacion == "Herbivoro" || tipoAlimentacion == "herbivoro") {
         cout << "Esta es la dieta que puede comer: " << endl;
         cout << "Hierbas" << endl << "Hojas" << endl << "Savia" << endl << "Raices" << endl << "Semillas" << endl
              << "Flores" << endl;
@@ -102,7 +102,7 @@ void cuartaOpcion(dieta *pDieta) {
         getline(cin >> std::ws, tipoDieta);
         pDieta->agregarComida(id, tipoAlimentacion, tipoDieta);
     }
-    if(tipoAlimentacion == "Omnivoro" || tipoAlimentacion == "omnivoro") {
+    else if(tipoAlimentacion == "Omnivoro" || tipoAlimentacion == "omnivoro") {
         cout << "Esta es la dieta que puede comer: " << endl;
         cout << "Carne" << endl << "Frutas" << endl << "Vegetales" << endl << "Plantas" << endl << "Pescado" << endl
              << "Verduras" << endl;

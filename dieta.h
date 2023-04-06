@@ -21,7 +21,6 @@ using std::vector;
 
 class dieta: public animales {
 protected:
-    //string tipoDieta;
     string tipoDietaCarnivoro;
     string tipoDietaHerbivoro;
     string tipoDietaOmnivoro;
@@ -30,6 +29,7 @@ protected:
     vector<dieta*> vectorHerbivoro;
 public:
     dieta() = default;
+    //dieta(string tipoDieta);
     dieta(string tipoDietaCarnivoro, string tipoDietaHerbivoro, string tipoDietaOmnivoro);
     //dieta(string tipoDieta, string tipoDietaCarnivoro, string tipoDietaHerbivoro, string tipoDietaOmnivoro);
     void agregarComida(int idAnimal, string tipoAlimentacion,string tipoDieta);

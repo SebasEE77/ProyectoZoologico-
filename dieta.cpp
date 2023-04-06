@@ -3,6 +3,9 @@
 //
 
 #include "dieta.h"
+//dieta::dieta(string tipoDieta){
+//    this->tipoDieta = tipoDieta;
+//}
 dieta::dieta(string tipoDietaCarnivoro, string tipoDietaHerbivoro, string tipoDietaOmnivoro){
     this->tipoDietaCarnivoro = tipoDietaCarnivoro;
     this->tipoDietaHerbivoro = tipoDietaHerbivoro;
@@ -16,19 +19,17 @@ void dieta::agregarComida(int idAnimal, string tipoAlimentacion, string tipoDiet
     int bandera = 0;
     for (itVectorAnimal = this->vectorAnimales.begin(); itVectorAnimal != this->vectorAnimales.end() and bandera == 0; ++itVectorAnimal) {
         animales *pAnimales = *itVectorAnimal;
-        if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoAlimentacion() == tipoAlimentacion){
-            if (tipoAlimentacion == "Carnivoro" || tipoAlimentacion == "carnivoro") {
-                vectorCarnivoro.push_back(new dieta(tipoDieta,tipoDietaHerbivoro,tipoDietaOmnivoro));
-                bandera = 1;
-            }
-            if(tipoAlimentacion == "Herbivoro" || tipoAlimentacion == "herbivoro") {
+        if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoAlimentacion() == "carnivoro") {
+            vectorCarnivoro.push_back(new dieta(tipoDieta,tipoDietaHerbivoro,tipoDietaOmnivoro));
+            bandera = 1;
+        }
+        else if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoAlimentacion() == "herbivoro") {
                 vectorHerbivoro.push_back(new dieta(tipoDietaCarnivoro,tipoDieta,tipoDietaOmnivoro));
                 bandera = 1;
-            }
-            else{
-                vectorOmnivoro.push_back(new dieta(tipoDietaCarnivoro,tipoDietaHerbivoro,tipoDieta));
-                bandera = 1;
-            }
+        }
+        else{
+            vectorOmnivoro.push_back(new dieta(tipoDietaCarnivoro,tipoDietaHerbivoro,tipoDieta));
+            bandera = 1;
         }
     }
     if(bandera == 0){
