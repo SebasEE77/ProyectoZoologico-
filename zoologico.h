@@ -9,7 +9,6 @@
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
-#include "animales.h"
 #include "habitat.h"
 
 using std::cout;
@@ -31,8 +30,6 @@ public:
     zoologico(string nombreZoologico);
     void agregarZoologico(string tipoHabitat);
     void mostrarInfo();
-    void agregarZoologico(string nombre, string especie, string tipoHabitat,
-                          int edad, string tipoAlimentacion, string estadoSalud);
 
 };
 

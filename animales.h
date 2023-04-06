@@ -18,28 +18,27 @@ using std::make_pair;
 using std::vector;
 
 class animales {
-public:
+protected:
     //string accionAnimal;
-    string nombreZoologico;
     int idAnimal;
+    string nombreAnimal;
     string nombre;
     string especie;
     int edad;
     string tipoAlimentacion;
     string estadoSalud;
     string tipoHabitat;
-    vector<animales*> vectorAnimales;
+    string tipoDieta;
     vector<animales*> vectorComida;
+    unordered_map<int, animales*> mapaComida;
 public:
     animales() = default;
-    animales(string nombreZoologico);
+    animales(string nombreAnimal);
+    animales(int idAnimal,string tipoDieta);
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud);
-    void agregarComida(string nombre, string tipoAlimentacion, string comida);
-    void mostrarInfo();
-    void agregarZoologico(string nombre, string especie, string tipoHabitat,
-                          int edad, string tipoAlimentacion, string estadoSalud);
-    void agregarZoologico(string tipoHabitat);
+    void agregarComida(int idAnimal,string tipoDieta);
+    void mostrarInfoDieta();
     //void agregarComidaCarnivoro(int idAnimal, string tipoAlimentacion, string tipoDieta);
 
 
@@ -50,6 +49,7 @@ public:
     string getNombre();
     string getEstadoSalud();
     string getHabitat();
+    string getTipoDieta();
 };
 
 

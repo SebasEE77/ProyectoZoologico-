@@ -25,7 +25,7 @@ protected:
 //    vector<dieta*> vectorCarnivoro;
 //    vector<dieta*> vectorOmnivoro;
 //    vector<dieta*> vectorHerbivoro;
-    vector<dieta*> vectorComida;
+  //  vector<dieta*> vectorComida;
 
 public:
     dieta() = default;

@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include "animales.h"
+#include "zoologico.h"
 
 using std::cout;
 using std::string;
@@ -21,15 +22,18 @@ using std::vector;
 class habitat{
 protected:
     string tipoHabitat;
+    //vector<habitat*> vectorHabitat;
     vector<animales*> vectorAnimales;
 public:
-    habitat() = default;
+    habitat() = default;;
     habitat(string tipoHabitat);
-    void agregarZoologico(string nombre, string especie, string tipoHabitat,
+    //void mostrarInfo(animales *pAnimales);
+    void mostrarInfo(int idAnimal);
+    void agregarZoologico(int id,string nombre, string especie, string tipoHabitat,
                           int edad, string tipoAlimentacion, string estadoSalud);
 
-
     string getHabitat();
+    vector<animales*>getVectorAnimales();
 };
 
 
