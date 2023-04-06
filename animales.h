@@ -29,16 +29,12 @@ public:
     string estadoSalud;
     string tipoHabitat;
     vector<animales*> vectorAnimales;
-    vector<animales*> vectorHabitat;
+    vector<animales*> vectorComida;
 public:
     animales() = default;
     animales(string nombreZoologico);
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud);
-    //void accionDelAnimal(int idAnimal, int accionAnimal);
-//    void agregarComidaCarnivoro(string tipoDieta);
-//    void agregarComidaHerbivoro(string tipoDieta);
-//    void agregarComidaOmnivoro(string tipoDieta);
     void agregarComida(string nombre, string tipoAlimentacion, string comida);
     void mostrarInfo();
     void agregarZoologico(string nombre, string especie, string tipoHabitat,

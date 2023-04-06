@@ -3,7 +3,7 @@
 //
 
 #include "animales.h"
-#include "habitat.h"
+#include "zoologico.h"
 
 // Constructor de la clase animal. Aunque esta clase no tenga los atributos, se pone aquí el constructor por coherencia
 animales::animales(string nombreZoologico){
@@ -25,7 +25,7 @@ animales::animales(int idAnimal, string nombre, string especie, string tipoHabit
 
 // Este metodo agrega los animales al vector teniendo en cuenta las caracteristicas pedidas en el main. Aqui hay una bandera ya que
 // ayuda a para el ciclo del for cuando se debe y no lo recorra inecesariamente.
-void animales::agregarZoologico(string nombre, string especie, string tipoHabitat,
+void zoologico::agregarZoologico(string nombre, string especie, string tipoHabitat,
                                  int edad, string tipoAlimentacion, string estadoSalud){
     int bandera = 0;
     vector<animales*>::iterator itVectorHabitat;
@@ -49,10 +49,10 @@ void animales::agregarZoologico(string nombre, string especie, string tipoHabita
 
 void animales::mostrarInfo() {
     vector<animales*>::iterator itVectorAnimales;
-    vector<animales*>::iterator itVectorHabitat;
+    vector<habitat*>::iterator itVectorHabitat;
     cout << "\nLista de habitats:\n";
     for (itVectorHabitat = this->vectorHabitat.begin(); itVectorHabitat != this->vectorHabitat.end(); ++itVectorHabitat) {
-        animales *pHabitat = *itVectorHabitat;
+        habitat *pHabitat = *itVectorHabitat;
         cout << "Habitat: "<<pHabitat->getHabitat()<<endl;
     }
     cout << "\nLista de animales:\n";

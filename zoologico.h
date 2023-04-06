@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include "animales.h"
-
+#include "habitat.h"
 
 using std::cout;
 using std::string;
@@ -23,6 +23,9 @@ using std::vector;
 
 class zoologico {
 
+protected:
+    string nombreZoologico;
+    vector<habitat*> vectorHabitat;
 public:
     zoologico() = default;
     zoologico(string nombreZoologico);

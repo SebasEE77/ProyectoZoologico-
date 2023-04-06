@@ -18,10 +18,15 @@ using std::unordered_map;
 using std::make_pair;
 using std::vector;
 
-class habitat: public animales {
+class habitat{
+protected:
+    string tipoHabitat;
+    vector<animales*> vectorAnimales;
 public:
     habitat() = default;
     habitat(string tipoHabitat);
+    void agregarZoologico(string nombre, string especie, string tipoHabitat,
+                          int edad, string tipoAlimentacion, string estadoSalud);
 
 
     string getHabitat();
