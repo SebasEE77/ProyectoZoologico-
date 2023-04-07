@@ -7,6 +7,8 @@
 #include <iostream>
 #include <unordered_map>
 #include <algorithm>
+#include <string>
+#include <vector>
 
 using std::cout;
 using std::string;
@@ -19,7 +21,7 @@ using std::vector;
 
 class animales {
 protected:
-    //string accionAnimal;
+    string accionAnimal;
     int idAnimal;
     string nombreAnimal;
     string nombre;
@@ -29,17 +31,17 @@ protected:
     string estadoSalud;
     string tipoHabitat;
     string tipoDieta;
-    vector<animales*> vectorComida;
-    unordered_map<int, animales*> mapaComida;
+    vector <animales*> vectorAcciones;
 public:
     animales() = default;
     animales(string nombreAnimal);
-    animales(int idAnimal,string tipoDieta);
+    animales(int idAnimal, string tipoDieta, string tipoAlimentacion);
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud);
-    void agregarComida(int idAnimal,string tipoDieta);
-    void mostrarInfoDieta();
-    //void agregarComidaCarnivoro(int idAnimal, string tipoAlimentacion, string tipoDieta);
+
+    void accionesComer(int idAnimal, int accionAnimal);
+    void accionesDormir(int idAnimal, int accionAnimal);
+    void accionesJugar(int idAnimal, int accionAnimal);
 
 
     int getIdAnimal();
@@ -50,6 +52,7 @@ public:
     string getEstadoSalud();
     string getHabitat();
     string getTipoDieta();
+    void setTipoDieta(string tipoDieta);
 };
 
 

@@ -15,28 +15,26 @@ animales::animales(int idAnimal, string nombre, string especie, string tipoHabit
     this->tipoAlimentacion = tipoAalimentacion;
     this->estadoSalud = estadoSalud;
 }
+// Constructor de animales para comenzar el zoologico, ubicado en el main
 animales::animales(string nombreAnimal) {
     this->nombreAnimal = nombreAnimal;
 }
-animales::animales(int idAnimal, string tipoDieta) {
+
+animales::animales(int idAnimal, string tipoDieta, string tipoAlimentacion) {
     this->idAnimal = idAnimal;
     this->tipoDieta = tipoDieta;
+    this->tipoAlimentacion = tipoAlimentacion;
 }
 
-void animales::agregarComida(int idAnimal, string tipoDieta) {
-    animales *pAnimales = new animales(idAnimal, tipoDieta);
-    this->mapaComida.insert(make_pair(idAnimal, pAnimales));
-    cout << "Se agrego una comida a la lista"<<endl;
+void animales::accionesComer(int idAnimal, int accionAnimal) {
+    string comida;
+
+
 }
 
-void animales::mostrarInfoDieta() {
-    unordered_map<int, animales *>::iterator itMap;
-    for (itMap = this->mapaComida.begin(); itMap != this->mapaComida.end(); ++itMap) {
-        int llave = itMap->first;
-        animales *pAnimales = itMap->second;
-        cout << "Id: " << itMap->first << " " << "Tipo Dieta: " << itMap->second->getTipoDieta() << endl;
-    }
-}
+
+
+
 
 
 
@@ -66,3 +64,6 @@ string animales::getTipoDieta(){
     return tipoDieta;
 }
 
+void animales::setTipoDieta(string tipoDieta) {
+    this->tipoDieta = tipoDieta;
+}

@@ -22,15 +22,14 @@ using std::vector;
 class habitat{
 protected:
     string tipoHabitat;
-    //vector<habitat*> vectorHabitat;
     vector<animales*> vectorAnimales;
 public:
     habitat() = default;;
     habitat(string tipoHabitat);
-    //void mostrarInfo(animales *pAnimales);
     void mostrarInfo(int idAnimal);
     void agregarZoologico(int id,string nombre, string especie, string tipoHabitat,
                           int edad, string tipoAlimentacion, string estadoSalud);
+    void agregarComida(int idAnimal, string tipoAlimentacion, string tipoDieta);
 
     string getHabitat();
     vector<animales*>getVectorAnimales();

@@ -19,7 +19,8 @@ void habitat::agregarZoologico(int id, string nombre, string especie, string tip
 }
 
 
-// Solamente muestra la información general del animal. Uno puede decidir que información ver de cuaqluier animal de acuerdo al id que tenga a gusto del usuario.
+// Solamente muestra la información general del animal. Uno puede decidir que información
+// ver de cuaqluier animal de acuerdo al id que tenga a gusto del usuario.
 void habitat::mostrarInfo(int idAnimal) {
     int bandera = 0;
     vector<animales*>::iterator itVectorAnimales;
@@ -43,61 +44,6 @@ void habitat::mostrarInfo(int idAnimal) {
         cout << "Esta es la informacion del animal"<<endl;
     }
 }
-
-//void habitat::mostrarInfo(animales *pAnimales) {
-//    cout << "Id: " << pAnimales->getIdAnimal() << endl;
-//    cout << "Nombre: " << pAnimales->getNombre() << endl;
-//    cout << "Especie: " << pAnimales->getEspecie() << endl;
-//    cout << "Habitat: " << pAnimales->getHabitat() << endl;
-//    cout << "Edad: " << pAnimales->getEdad() << endl;
-//    cout << "Tipo de Alimentacion: " << pAnimales->getTipoAlimentacion() << endl;
-//    cout << "Estado de salud: " << pAnimales->getEstadoSalud() << endl;
-//    cout << endl;
-//}
-//void dieta::agregarComida(int idAnimal, string tipoAlimentacion, string tipoDieta) {
-//    vector<animales*>::iterator itVectorAnimal;
-//    int bandera = 0;
-//    for (itVectorAnimal = this->vectorAnimales.begin(); itVectorAnimal != this->vectorAnimales.end() and bandera == 0; ++itVectorAnimal) {
-//        animales *pAnimales = *itVectorAnimal;
-//        if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoAlimentacion() == tipoAlimentacion) {
-//            vectorComida.push_back(new dieta(tipoDieta));
-//            bandera = 1;
-//        }
-//    }
-//    if(bandera == 0){
-//        cout << "No se encontro algun animal con ese Id o con el mismo tipo de alimentacion"<<endl;
-//    }else{
-//        cout << "Se agrego la comida a la lista"<<endl;
-//    }
-//}
-//
-//void dieta::mostrarInfo() {
-//    vector<dieta *>::iterator itVectorComida;
-//    vector<dieta*>::iterator itVectorHerbivoro;
-//    vector<dieta*>::iterator itVectorOmnivoro;
-//    int bandera = 0;
-//    cout << "\nLista de comida carnivoros:\n";
-//    for (itVectorComida = this->vectorComida.begin(); itVectorComida != this->vectorComida.end(); ++itVectorComida) {
-//        dieta *pComida = *itVectorComida;
-//        if (pComida->getTipoAlimentacion() == "carnivoro") {
-//            cout << "Dieta: " << pComida->getTipoDieta() << endl;
-//        }
-
-//void habitat::mostrarInfo() {
-//    vector<animales *>::iterator itVectorAnimales;
-//    for (itVectorAnimales = this->vectorAnimales.begin();
-//         itVectorAnimales != this->vectorAnimales.end(); ++itVectorAnimales) {
-//        animales *pAnimales = *itVectorAnimales;
-//        cout << "Id: " << pAnimales->getIdAnimal() << endl;
-//        cout << "Nombre: " << pAnimales->getNombre() << endl;
-//        cout << "Especie: " << pAnimales->getEspecie() << endl;
-//        cout << "Habitat: " << pAnimales->getHabitat() << endl;
-//        cout << "Edad: " << pAnimales->getEdad() << endl;
-//        cout << "Tipo de Alimentacion: " << pAnimales->getTipoAlimentacion() << endl;
-//        cout << "Estado de salud: " << pAnimales->getEstadoSalud() << endl;
-//        cout << endl;
-//    }
-//}
 
 string habitat::getHabitat(){
     return tipoHabitat;
