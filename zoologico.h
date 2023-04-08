@@ -19,21 +19,22 @@ using std::cin;
 using std::unordered_map;
 using std::make_pair;
 using std::vector;
+using std::array;
 
 class zoologico {
 
 protected:
     string nombreZoologico;
-    string arregloCarnivoro[6] = {"Carne", "Pescado", "pechuga", "Gusanos", "Ave", "Huevos"};
-    string arregloHerbivoro[6] = {"Hierbas", "Hojas", "Savia", "Raices", "Semillas", "Flores"};
-    string arregloOmnivoros[6] = {"Frutas", "Carne", "Vegetales", "Plantas", "Pescado", "Verduras"};
+    string lugarZoologico;
+    string arregloCarnivoro[6] = {"carne", "pescado", "pechuga", "gusanos", "ave", "huevos"};
+    string arregloHerbivoro[6] = {"hierbas", "hojas", "savia", "raices", "semillas", "flores"};
+    string arregloOmnivoros[6] = {"frutas", "carne", "vegetales", "plantas", "pescado", "verduras"};
     vector<habitat *> vectorHabitat;
     vector<animales *> vectorComida;
     string tipoDieta;
 
 public:
     zoologico() = default;
-
 
     zoologico(string nombreZoologico);
 
@@ -43,7 +44,9 @@ public:
 
     void agregarComida(int idAnimal, string tipoDieta,string tipoAlimentacion);
 
-    void mostrarArreglo(int idAnimal, string tipoDieta,string tipoAlimentacion);
+    string recorrerVectorHabitat(string tipoHabitat);
+
+    void mostrarArreglo(string tipoAlimentacion);
 
     void mostrarInfo(int idAnimal);
 
@@ -51,9 +54,9 @@ public:
 
     void eliminarComida(int idAnimal, string modificar);
 
-
     vector<habitat*> getVectorHabitat();
     vector<animales*> getVectorComida();
+    string getArregloCarnivoro();
 
 
 };

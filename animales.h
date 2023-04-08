@@ -24,6 +24,7 @@ protected:
     string accionAnimal;
     int idAnimal;
     string nombreAnimal;
+    string lugarAnimales;
     string nombre;
     string especie;
     int edad;
@@ -34,14 +35,17 @@ protected:
     vector <animales*> vectorAcciones;
 public:
     animales() = default;
-    animales(string nombreAnimal);
+    animales(string tipoDieta);
+    animales(string nombreAnimal,string lugarAnimales);
+    animales(int idAnimal, string accionAnimal);
     animales(int idAnimal, string tipoDieta, string tipoAlimentacion);
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud);
 
-    void accionesComer(int idAnimal, int accionAnimal);
-    void accionesDormir(int idAnimal, int accionAnimal);
-    void accionesJugar(int idAnimal, int accionAnimal);
+    void agregarAccion(int idAnimal, string accionAnimal);
+    void accionesComer(int idAnimal, string accionAnimal);
+    void accionesDormir(int idAnimal, string accionAnimal);
+    void accionesJugar(int idAnimal, string accionAnimal);
 
 
     int getIdAnimal();
@@ -52,7 +56,11 @@ public:
     string getEstadoSalud();
     string getHabitat();
     string getTipoDieta();
+    string getAccionAnimal();
     void setTipoDieta(string tipoDieta);
+
+    //zoologico * getZoologico();
+
 };
 
 

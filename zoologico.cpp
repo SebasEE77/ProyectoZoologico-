@@ -29,10 +29,51 @@ void zoologico::mostrarInfo() {
     }
 }
 
+// Este metodo ayuda a recorrer el vector habitat para saber si existe
+// y así agregar el animal correspondiente al habitat
+string zoologico::recorrerVectorHabitat(string tipoHabitat) {
+    vector<habitat *>::iterator itVectorHabitat;
+    int bandera = 0;
+    string resultado = "No pertenece";
+    for (itVectorHabitat = this->vectorHabitat.begin();
+         itVectorHabitat != this->vectorHabitat.end() and bandera == 0; ++itVectorHabitat) {
+        habitat *pHabitat = *itVectorHabitat;
+        if (pHabitat->getHabitat() == tipoHabitat) {
+            bandera = 1;
+        }
+    }
+    if (bandera == 0) {
+        return resultado;
+    } else {
+        return tipoHabitat;
+    }
+}
+
+
 // En este caso se añade la comida al vector para tener la dieta de los animales
 void zoologico::agregarComida(int idAnimal, string tipoDieta,string tipoAlimentacion) {
-    vectorComida.push_back(new animales(idAnimal,tipoDieta,tipoAlimentacion));
-    cout << "Se agrego una comida a la lista"<<endl;
+    int bandera = 0;
+    string palabraCarnivoro, palabraHerbivoro, palabraOmnivoro;
+    for(int i = 0; i < 6 and bandera == 0; i++) {
+        palabraCarnivoro = arregloCarnivoro[i]; palabraHerbivoro = arregloHerbivoro[i]; palabraOmnivoro = arregloOmnivoros[i];
+        if (palabraCarnivoro == tipoDieta) {
+            vectorComida.push_back(new animales(idAnimal, tipoDieta, tipoAlimentacion));
+            bandera = 1;
+        }
+        else if (palabraHerbivoro == tipoDieta) {
+            vectorComida.push_back(new animales(idAnimal, tipoDieta, tipoAlimentacion));
+            bandera = 1;
+        }
+        else if (palabraOmnivoro == tipoDieta) {
+            vectorComida.push_back(new animales(idAnimal, tipoDieta, tipoAlimentacion));
+            bandera = 1;
+        }
+    }
+    if (bandera == 0){
+        cout << "No se agrego nada a la lista de comidas"<<endl;
+    }else{
+        cout<< "Se agrego un nuevo elemento a la lista"<<endl;
+    }
 }
 
 // Aqui solamente se muestra la información del vector comida, dando a conocer el id y la comida del animal.
@@ -51,12 +92,25 @@ void zoologico::mostrarInfo(int idAnimal) {
 void zoologico::cambiarComida(int idAnimal, string modificar,string tipoDieta) {
     vector<animales*>::iterator itVectorAnimales;
     int bandera = 0;
+    string palabraCarnivoro, palabraHerbivoro,palabraOmnivoro;
     for (itVectorAnimales = this->vectorComida.begin(); itVectorAnimales != this->vectorComida.end() and bandera == 0; ++itVectorAnimales) {
         animales *pAnimales = *itVectorAnimales;
-        if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoDieta() == modificar){
-            pAnimales->setTipoDieta(tipoDieta);
-            bandera = 1;
+        for(int i = 0; i < 6; i++){
+            palabraCarnivoro = arregloCarnivoro[i]; palabraHerbivoro = arregloHerbivoro[i]; palabraOmnivoro = arregloOmnivoros[i];
+            if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoDieta() == modificar and palabraCarnivoro == tipoDieta){
+                pAnimales->setTipoDieta(tipoDieta);
+                bandera = 1;
+            }
+            else if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoDieta() == modificar and palabraHerbivoro == tipoDieta){
+                pAnimales->setTipoDieta(tipoDieta);
+                bandera = 1;
+            }
+            else if(pAnimales->getIdAnimal() == idAnimal and pAnimales->getTipoDieta() == modificar and palabraOmnivoro == tipoDieta) {
+                pAnimales->setTipoDieta(tipoDieta);
+                bandera = 1;
+            }
         }
+
     }
     if(bandera == 0){
         cout << "El id no concuerda o la comida que escribiste es erronea"<<endl;
@@ -83,33 +137,25 @@ void zoologico::eliminarComida(int idAnimal, string modificar) {
     }
 }
 
-void zoologico::mostrarArreglo(int idAnimal, string tipoDieta,string tipoAlimentacion){
+// Aquí el metodo se encarga de mostrar la información de los arreglos de alimentación de cada tipo.
+void zoologico::mostrarArreglo(string tipoAlimentacion){
     if (tipoAlimentacion == "Carnivoro" || tipoAlimentacion == "carnivoro") {
         cout << "Esta es la dieta que puede comer: " << endl;
         for (int i = 0; i < 6; i++) {
-            cout << arregloCarnivoro[i] << endl;
+            cout << "Comida: "<< arregloCarnivoro[i] << endl;
         }
-        cout << "Escribe la comida que le quieras agregar" << endl;
-        getline(cin >> std::ws, tipoDieta);
-        this->agregarComida(idAnimal, tipoDieta,tipoAlimentacion);
     }
-    else if(tipoAlimentacion == "Herbivoro" || tipoAlimentacion == "herbivoro") {
+    else if (tipoAlimentacion == "Herbivoro" || tipoAlimentacion == "herbivoro") {
         cout << "Esta es la dieta que puede comer: " << endl;
         for (int i = 0; i < 6; i++) {
-            cout << arregloHerbivoro[i] << endl;
+            cout << "Comida: "<< arregloHerbivoro[i] << endl;
         }
-        cout << "Escribe la comida que le quieras agregar" << endl;
-        getline(cin >> std::ws, tipoDieta);
-        this->agregarComida(idAnimal, tipoDieta,tipoAlimentacion);
     }
     else{
         cout << "Esta es la dieta que puede comer: " << endl;
         for (int i = 0; i < 6; i++) {
-            cout << arregloOmnivoros[i] << endl;
+            cout << "Comida: "<< arregloOmnivoros[i] << endl;
         }
-        cout << "Escribe la comida que le quieras agregar" << endl;
-        getline(cin >> std::ws, tipoDieta);
-        this->agregarComida(idAnimal, tipoDieta,tipoAlimentacion);
     }
 }
 

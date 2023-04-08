@@ -14,9 +14,9 @@ void primeraOpcion(zoologico *pHabitat){
 // El metodo sirve para poder realizar la agregación de los animales. Se pregunta de una vez todas las caracteristicas del animal y los
 // ifs sirven para confirmar que el usuario escogió bien el tipo de habitat del animal, ya que podra suceder que un animal sea asignado
 // a un habitat incoherente.
-void segundaOpcion(habitat *pAnimales){
+void segundaOpcion(habitat *pAnimales, zoologico *pZoologico){
     string nombre, especie, tipoHabitat,tipoAlimentacion, estadoSalud;
-    int edad, tipoDesertico, tipoAcuatico, tipoPolar, tipoSelvatico,id;
+    int edad,id;
     cout << "Escriba el id del animal: "<<endl;
     cin>>id;
     cout << "Escriba el nombre del animal: "<<endl;
@@ -31,51 +31,14 @@ void segundaOpcion(habitat *pAnimales){
     getline(cin >> std::ws, tipoAlimentacion);
     cout << "Escriba su estado de salud: "<<endl;
     getline(cin >> std::ws, estadoSalud);
-    if(tipoHabitat == "desertico" || tipoHabitat == "Desertico"){
-        cout << "El animal pertenece al desierto?"<<endl;
-        cout << "1. Si"<<endl;
-        cout << "2. No"<<endl;
-        cin>>tipoDesertico;
-        if(tipoDesertico == 1){
-            pAnimales->agregarZoologico(id,nombre,especie,tipoHabitat,edad,tipoAlimentacion,estadoSalud);
-        }
-        else{
-            cout <<"El animal no pertenece a este tipo de habitat"<<endl;
-        }
+    if(pZoologico->recorrerVectorHabitat(tipoHabitat) == tipoHabitat){
+        pAnimales->agregarZoologico(id,nombre,especie,tipoHabitat,edad,tipoAlimentacion,estadoSalud);
     }
-    else if(tipoHabitat == "acuatico" || tipoHabitat == "Acuatico") {
-        cout << "El animal respira en el agua?" << endl;
-        cout << "1. Si" << endl;
-        cout << "2. No" << endl;
-        cin >> tipoAcuatico;
-        if (tipoAcuatico == 1) {
-            pAnimales->agregarZoologico(id,nombre, especie, tipoHabitat, edad, tipoAlimentacion, estadoSalud);
-        } else {
-            cout << "El animal no pertenece a este tipo de habitat" << endl;
-        }
+    else{
+        cout <<"El animal no pertenece a este tipo de habitat"<<endl;
     }
-    else if(tipoHabitat == "selvatico" || tipoHabitat == "Selvatico") {
-        cout << "El animal vive en la selva?" << endl;
-        cout << "1. Si" << endl;
-        cout << "2. No" << endl;
-        cin >> tipoSelvatico;
-        if (tipoSelvatico == 1) {
-            pAnimales->agregarZoologico(id,nombre, especie, tipoHabitat, edad, tipoAlimentacion, estadoSalud);
-        } else {
-            cout << "El animal no pertenece a este tipo de habitat" << endl;
-        }
-    }
-    else if(tipoHabitat == "polar" || tipoHabitat == "Polar") {
-        cout << "El animal soporta extremas bajas temperaturas?" << endl;
-        cout << "1. Si" << endl;
-        cout << "2. No" << endl;
-        cin >> tipoPolar;
-        if (tipoPolar == 1) {
-            pAnimales->agregarZoologico(id,nombre, especie, tipoHabitat, edad, tipoAlimentacion, estadoSalud);
-        } else {
-            cout << "El animal no pertenece a este tipo de habitat" << endl;
-        }
-    }
+
+
 }
 // Este metodo nos ayuda a ver detalladamente la información de cada animal del zoologico.
 void mostrarInfoAnimales(habitat *pAnimales){
@@ -87,41 +50,57 @@ void mostrarInfoAnimales(habitat *pAnimales){
 
 // Este metodo nos ayuda pra agregar comida al vector de tipoAlimentacion,
 // para así saber que come cada animal de acuerdo su alimentación.
-void cuartaOpcion(zoologico *pDieta) {
+void cuartaOpcion(zoologico *pDieta, habitat *pAnimales) {
     string tipoDieta, tipoAlimentacion;
     int id;
     cout << "Escribe el id del animal para agregar una dieta" << endl;
     cin >> id;
-    cout << "Escribe el tipo de alimentacion del animal:" << endl;
-    cin >> tipoAlimentacion;
-    pDieta->mostrarArreglo(id, tipoDieta, tipoAlimentacion);
+    if(pAnimales->recorrerVectorAnimales(id) == id){
+        pAnimales->mostrarInfo(id);
+        cout << "Escribe el tipo de alimentacion del animal:" << endl;
+        cin >> tipoAlimentacion;
+        pDieta->mostrarArreglo(tipoAlimentacion);
+        cout << "Escribe la comida que le quieras agregar" << endl;
+        getline(cin >> std::ws, tipoDieta);
+        pDieta->agregarComida(id, tipoDieta,tipoAlimentacion);
+    }else{
+        cout << "No existe este id en el zoologico"<<endl;
+    }
 
 }
 
-void quintaOpcion(zoologico *pAnimales){
+void quintaOpcion(zoologico *pDieta, habitat *pAnimales){
     int id, respuesta;
-    string comidaAgregar, comidaModificar, comidaEliminar;
+    string comidaAgregar, comidaModificar, comidaEliminar,tipoAlimentacion;
     cout << "Escribe el id del animal para modificar una dieta" << endl;
     cin >> id;
-    cout << "En este caso quieres modificar la dieta o eliminar una dieta?" << endl;
-    cout << "1. Modificar" << endl;
-    cout << "2. Eliminar" << endl;
-    cin>>respuesta;
-    if(respuesta == 1){
-        cout << "Esta es la informacion de los animales que tienen dieta" << endl;
-        pAnimales->mostrarInfo(id);
-        cout << "Escribe la comida que quieras modificar" << endl;
-        cin>>comidaModificar;
-        cout << "Ahora escribe la comida que quieras agregar" << endl;
-        cin>>comidaAgregar;
-        pAnimales->cambiarComida(id,comidaModificar,comidaAgregar);
+    if(pAnimales->recorrerVectorAnimales(id) == id){
+        cout << "En este caso quieres modificar la dieta o eliminar una dieta?" << endl;
+        cout << "1. Modificar" << endl;
+        cout << "2. Eliminar" << endl;
+        cin>>respuesta;
+        if(respuesta == 1){
+            cout << "Esta es la informacion de los animales que tienen dieta" << endl;
+            pDieta->mostrarInfo(id);
+            cout << "Escribe el tipo de alimentacion del animal" << endl;
+            cin>>tipoAlimentacion;
+            cout << "Escribe la comida que quieras modificar" << endl;
+            cin>>comidaModificar;
+            pDieta->mostrarArreglo(tipoAlimentacion);
+            cout << "Ahora escribe la comida que quieras agregar de acuerdo a la lista" << endl;
+            cin>>comidaAgregar;
+            pDieta->cambiarComida(id,comidaModificar,comidaAgregar);
+        }else{
+            cout << "Esta es la informacion de los animales que tienen dieta" << endl;
+            pDieta->mostrarInfo(id);
+            cout << "Escribe la comida que quieras eliminar" << endl;
+            cin>>comidaEliminar;
+            pDieta->eliminarComida(id,comidaEliminar);
+        }
     }else{
-        cout << "Esta es la informacion de los animales que tienen dieta" << endl;
-        pAnimales->mostrarInfo(id);
-        cout << "Escribe la comida que quieras eliminar" << endl;
-        cin>>comidaEliminar;
-        pAnimales->eliminarComida(id,comidaEliminar);
+        cout << "No existe este id en el zoologico"<<endl;
     }
+
 }
 
 void mostrarInfoDieta(zoologico *pDieta){
@@ -131,17 +110,16 @@ void mostrarInfoDieta(zoologico *pDieta){
     pDieta->mostrarInfo(idAnimal);
 }
 
-void septimaOpcion(animales *pAccion){
-    int id,accionAnimal;
-    string tipoDieta;
+void septimaOpcion(animales *pAccion, habitat *pAnimales){
+    int id;
+    string accionAnimal;
     cout << "A cual animal quisieras hacerle una accion? Escribe su ID de acuerdo a la lista de la opcion 3 del menu: "<<endl;
     cin>>id;
-    cout << "Que accion quisieras hacer?"<<endl;
-    cout << "1. Comer"<<endl;
-    cout << "2. dormir"<<endl;
-    cout << "3. jugar"<<endl;
+    pAnimales->mostrarInfo(id);
+    cout << "Escribe la accion que quisieras hacer?"<<endl;
+    cout << "Comer, dormir o jugar"<<endl;
     cin>> accionAnimal;
-    if(accionAnimal == 1){
+    if(accionAnimal == "comer" || accionAnimal == "Comer"){
         pAccion->accionesComer(id, accionAnimal);
     }
 }
@@ -149,6 +127,7 @@ void septimaOpcion(animales *pAccion){
 // Se muestra el menu y se llaman los metodos.
 void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) {
     int opc = 0, respuesta;
+    string tipoDieta;
     do
     {
         cout << "\n**** Bienvenido al Zoologico de Cali ****\n";
@@ -166,7 +145,7 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
                 primeraOpcion(pZoologico);
                 break;
             case 2:
-                segundaOpcion(pHabitat);
+                segundaOpcion(pHabitat, pZoologico);
                 break;
             case 3:
                 pZoologico->mostrarInfo();
@@ -184,21 +163,21 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
                 }while(respuesta != 2);
                 break;
             case 4:
-                cuartaOpcion(pZoologico);
+                cuartaOpcion(pZoologico,pHabitat);
                 do{
                     cout << "Quisieras agregar comida a otro animal?"<<endl;
                     cout << "1. Si"<<endl;
                     cout << "2. No"<<endl;
                     cin>>respuesta;
                     if(respuesta == 1){
-                        cuartaOpcion(pZoologico);
+                        cuartaOpcion(pZoologico,pHabitat);
                     }else{
                         cout << "Ya agregaste la comida a los animales, vuelves al menu"<<endl;
                     }
                 }while(respuesta != 2);
                 break;
             case 5:
-                quintaOpcion(pZoologico);
+                quintaOpcion(pZoologico, pHabitat);
                 break;
             case 6:
                 mostrarInfoDieta(pZoologico);
@@ -215,7 +194,7 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
                 }while(respuesta != 2);
                 break;
             case 7:
-                septimaOpcion(pAnimales);
+                septimaOpcion(pAnimales, pHabitat);
                 break;
             default:
                 break;
@@ -225,7 +204,7 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
 
 int main() {
     zoologico *pZoologico = new zoologico("Zoologico");
-    animales *pAnimales = new animales("Animales");
+    animales *pAnimal = new animales("Animales", "Cali");
     habitat *pHabitat = new habitat("Habitats");
-    mostrarMenu(pZoologico,pHabitat,pAnimales);
+    mostrarMenu(pZoologico,pHabitat,pAnimal);
 }

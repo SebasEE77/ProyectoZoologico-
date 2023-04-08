@@ -1,7 +1,6 @@
 //
 // Created by sebat on 4/04/2023.
 //
-#include "zoologico.h"
 #include "habitat.h"
 
  //Constructor de la clase habitat
@@ -16,6 +15,7 @@ void habitat::agregarZoologico(int id, string nombre, string especie, string tip
 
         vectorAnimales.push_back(new animales(id, nombre, especie, tipoHabitat,
                                                   edad, tipoAlimentacion, estadoSalud));
+        cout << "Se agrego un animal"<<endl;
 }
 
 
@@ -42,6 +42,23 @@ void habitat::mostrarInfo(int idAnimal) {
         cout << "El animal no pertenece al zoologico"<<endl;
     }else{
         cout << "Esta es la informacion del animal"<<endl;
+    }
+}
+
+int habitat::recorrerVectorAnimales(int idAnimal) {
+    int bandera = 0;
+    vector<animales *>::iterator itVectorAnimales;
+    for (itVectorAnimales = this->vectorAnimales.begin();
+         itVectorAnimales != this->vectorAnimales.end() and bandera == 0; ++itVectorAnimales) {
+        animales *pAnimales = *itVectorAnimales;
+        if (pAnimales->getIdAnimal() == idAnimal) {
+            bandera = 1;
+        }
+    }
+    if(bandera == 0){
+        return 0;
+    }else{
+        return idAnimal;
     }
 }
 

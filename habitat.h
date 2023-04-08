@@ -8,7 +8,6 @@
 #include <unordered_map>
 #include <algorithm>
 #include "animales.h"
-#include "zoologico.h"
 
 using std::cout;
 using std::string;
@@ -29,7 +28,7 @@ public:
     void mostrarInfo(int idAnimal);
     void agregarZoologico(int id,string nombre, string especie, string tipoHabitat,
                           int edad, string tipoAlimentacion, string estadoSalud);
-    void agregarComida(int idAnimal, string tipoAlimentacion, string tipoDieta);
+    int recorrerVectorAnimales(int idAnimal);
 
     string getHabitat();
     vector<animales*>getVectorAnimales();
