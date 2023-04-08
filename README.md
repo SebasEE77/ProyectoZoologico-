@@ -1,2 +1,23 @@
-# ProyectoZoologico-
-Creación de proyecto donde se elaborará un Zoológico.
+# Proyecto Zoológico
+### Integrantes: Juan Manuel Hurtado y Sebastián Enríquez
+
+#### Contexto 
+Nuestro proyecto trata de simular un zoológico el cual se compone de distintos hábitats escritos por el usuario, en este caso solo se podrían 4, el hábitat desértico, acuático, polar y selvático. La idea es que dentro de esos hábitats haya animales con ciertas características, las cuales el usuario determinara para que finalmente se pueda interactuar con cada animal, ya sea agregando o editando la dieta del animal dependiendo de su tipo de alimentación, que sería carnívoro, herbívoro u omnívoro, y también interactuar de acuerdo con varias acciones que el animal podrá hacer, siendo comer, dormir o jugar.
+
+#### Introducción 
+El proyecto consta de 4 archivos .cpp y 3 archivos .h, es decir, hay 3 clases en el proyecto las cuales cada una tiene un archivo .cpp y un archivo .h, el sobrante sería el main .cpp. En primer lugar, la primera clase tiene como nombre Zoológico, el cual tiene la principal función de crear el zoológico con un nombre y por consiguiente crearía los distintos hábitats a gusto del usuario, puesto que se van a guardar en un vector tipo Hábitat y, si el usuario desea, podría mirar todos los hábitats que ha creado. En segundo lugar, está la clase Hábitat la cual crea los animales de acuerdo con las características hechas por el usuario, en el que se van a guardar en un vector tipo Animal, asimismo, si el usuario desea podrá ver la información de cualquier animal que esté en el vector. En tercer lugar, está la clase Animal la cual se enfoca más que todo en manejar la dieta de cada animal, preguntándole al usuario que comida desearía agregar al vector tipo string de la dieta, claramente de acuerdo a su tipo de alimentación y a una lista de comida ya establecida, también, maneja las acciones donde cada una se agregaría a un vector tipo Animal de acuerdo a lo que el usuario haya escogido.
+
+#### Funcionamiento
+El programa en sí tiene un buen funcionamiento, en el main claramente hay un menú con varias opciones para que el usuario elija y cada opción en el switch tiene un método el cual hace exactamente lo que el usuario pide. En términos generales, a la hora de correr el programa va a aparecer un menú con distintas opciones, y el usuario escoge cuál, por ejemplo, escoge la primera opción, entonces en el switch se para en el case 1 y llama al método que haya ahí, en este caso el método está en el main donde se pide información, luego de eso, dentro de ese método se llama a otro de la clase zoológico donde hace el trabajo propio de lo que el usuario le pide hacer, en este caso, seria crear un hábitat con un nombre el cual se agrega al vector de hábitats, asimismo ocurre cuando el usuario escoge la segunda opción, se llama al método que está en el main donde se pide datos al usuario para crear un animal y entonces haría el mismo proceso que la primera. Como es posible ver, pasa esto en la mayoría de los casos, ya que se necesita pedir información al usuario donde normalmente lo hacemos en el main, y así luego se pueda ejecutar cada método que se llama donde hace el proceso necesario de acuerdo a lo que pide el usuario. Hay que tener en cuenta que cada clase tiene sus respectivos atributos y el nombre de los métodos en el .h, mientras que en el .cpp está el desarrollo de cada método creado en el .h, por ejemplo, a la hora de agregar o editar una dieta, en el menú se llama al método correspondiente de esa acción, como el método está en una clase Animal, entonces en animales .cpp va a estar todo el proceso que involucra realizar esta acción y cuando lo haga en la terminal va a aparecer el resultado de lo que el usuario pidió. Cabe mencionar que es posible acceder a los atributos de cada clase con los métodos de acceso, es decir los gets y sets de cada atributo ubicados en el .h, los cuales se podrían manejar en cualquier clase pero llamándolos con el respectivo apuntador de su propia clase. Finalmente, se podría decir que la ejecución del programa es bastante sencilla, ya que cuando comienza y aparezca el menú, el usuario solamente escribe un número escogiendo la opción del menú, y dentro de cada opción van a mostrarse detalladamente instrucciones de lo que el usuario deberá realizar para poder conseguir lo que esa opción del menú brinda. De esta misma forma, si el usuario se equivoca a la hora de escribir o hace bien lo que le piden, siempre habrá un mensaje de que lo ha logrado o de que no se ha hecho para que lo tenga en cuenta y así sepa qué hacer después.
+
+#### Evidencias
+A continuación se mostrará como evidencia que el programa funciona correctamente.
+
+
+
+
+
+
+
+
+###### URL Diagrama UML:
