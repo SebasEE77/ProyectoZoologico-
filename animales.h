@@ -19,6 +19,7 @@ using std::unordered_map;
 using std::make_pair;
 using std::vector;
 
+
 class animales {
 protected:
     string accionAnimal;
@@ -33,10 +34,10 @@ protected:
     string tipoHabitat;
     string tipoDieta;
     vector <animales*> vectorAcciones;
+    vector <string> vectorComida;
 public:
     animales() = default;
-    animales(string tipoDieta);
-    animales(string nombreAnimal,string lugarAnimales);
+    animales(string nombreAnimal);
     animales(int idAnimal, string accionAnimal);
     animales(int idAnimal, string tipoDieta, string tipoAlimentacion);
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,

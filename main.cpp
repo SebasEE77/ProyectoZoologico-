@@ -4,16 +4,16 @@
 #include "habitat.h"
 
 
-// El metodo para poder realizar la agregación del habitat.
+// Metodo para poder realizar la agregación del habitat. Sirve para poder llamarlo en el menu y así facilmente
+// llamar al otro metodo para que agregue el habitat.
 void primeraOpcion(zoologico *pHabitat){
     string tipoHabitat;
     cout<<"Escriba el habitat que desea agregar: "<<endl;
     cin>>tipoHabitat;
     pHabitat->agregarZoologico(tipoHabitat);
 }
-// El metodo sirve para poder realizar la agregación de los animales. Se pregunta de una vez todas las caracteristicas del animal y los
-// ifs sirven para confirmar que el usuario escogió bien el tipo de habitat del animal, ya que podra suceder que un animal sea asignado
-// a un habitat incoherente.
+// El metodo sirve para poder realizar la agregación de los animales. Se pregunta de una vez todas las caracteristicas del animal, y
+// se recorre el vector habitat para saber si existe el habitat y así agregar el animal al habitat correspondiente
 void segundaOpcion(habitat *pAnimales, zoologico *pZoologico){
     string nombre, especie, tipoHabitat,tipoAlimentacion, estadoSalud;
     int edad,id;
@@ -48,8 +48,8 @@ void mostrarInfoAnimales(habitat *pAnimales){
     pAnimales->mostrarInfo(idAnimal);
 }
 
-// Este metodo nos ayuda pra agregar comida al vector de tipoAlimentacion,
-// para así saber que come cada animal de acuerdo su alimentación.
+// Este metodo nos ayuda para agregar comida al vector de tipoAlimentacion,
+// y así saber que come cada animal de acuerdo su alimentación.
 void cuartaOpcion(zoologico *pDieta, habitat *pAnimales) {
     string tipoDieta, tipoAlimentacion;
     int id;
@@ -69,6 +69,8 @@ void cuartaOpcion(zoologico *pDieta, habitat *pAnimales) {
 
 }
 
+// En este metodo se recorre primero el vector animal para ver si concuerda con el id introducido al principio y después
+// se debe escoger entre modificar o eliminar alguna comida del vector.
 void quintaOpcion(zoologico *pDieta, habitat *pAnimales){
     int id, respuesta;
     string comidaAgregar, comidaModificar, comidaEliminar,tipoAlimentacion;
@@ -103,6 +105,7 @@ void quintaOpcion(zoologico *pDieta, habitat *pAnimales){
 
 }
 
+// El metodo ayuda a mostrar la información de cada animal que tenga una dieta establecida
 void mostrarInfoDieta(zoologico *pDieta){
     int idAnimal;
     cout << "Escribe el id del animal al que quisieras ver su informacion de la comida:"<<endl;
@@ -110,6 +113,7 @@ void mostrarInfoDieta(zoologico *pDieta){
     pDieta->mostrarInfo(idAnimal);
 }
 
+// En proceso...
 void septimaOpcion(animales *pAccion, habitat *pAnimales){
     int id;
     string accionAnimal;
@@ -120,7 +124,6 @@ void septimaOpcion(animales *pAccion, habitat *pAnimales){
     cout << "Comer, dormir o jugar"<<endl;
     cin>> accionAnimal;
     if(accionAnimal == "comer" || accionAnimal == "Comer"){
-        pAccion->accionesComer(id, accionAnimal);
     }
 }
 
@@ -194,7 +197,6 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
                 }while(respuesta != 2);
                 break;
             case 7:
-                septimaOpcion(pAnimales, pHabitat);
                 break;
             default:
                 break;
@@ -204,7 +206,7 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
 
 int main() {
     zoologico *pZoologico = new zoologico("Zoologico");
-    animales *pAnimal = new animales("Animales", "Cali");
+    animales *pAnimal = new animales("Animales");
     habitat *pHabitat = new habitat("Habitats");
     mostrarMenu(pZoologico,pHabitat,pAnimal);
 }

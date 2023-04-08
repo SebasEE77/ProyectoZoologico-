@@ -45,6 +45,8 @@ void habitat::mostrarInfo(int idAnimal) {
     }
 }
 
+// Este metodo se encarga especificamente de recorrer el vector animal para poder saber si, en este caso, el id
+// concuerda con que se pide en el main (metodos: quintaOpcion y cuartaOpcion)
 int habitat::recorrerVectorAnimales(int idAnimal) {
     int bandera = 0;
     vector<animales *>::iterator itVectorAnimales;
@@ -62,6 +64,8 @@ int habitat::recorrerVectorAnimales(int idAnimal) {
     }
 }
 
+
+// A partir de aqui estan los gets
 string habitat::getHabitat(){
     return tipoHabitat;
 }
