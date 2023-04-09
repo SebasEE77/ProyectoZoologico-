@@ -21,33 +21,27 @@ using std::vector;
 
 class animales {
 protected:
-    string accionAnimal;
+    string arregloCarnivoro[6] = {"carne", "pescado", "pechuga", "gusanos", "ave", "huevos"};
+    string arregloHerbivoro[6] = {"hierbas", "hojas", "savia", "raices", "semillas", "flores"};
+    string arregloOmnivoros[6] = {"frutas", "carne", "vegetales", "plantas", "pescado", "verduras"};
     int idAnimal;
+    int edad;
+    int horasDormir;
+    int estadoActivo;
+    int estadoJugar;
+    string accionAnimal;
     string nombreAnimal;
-    string lugarAnimales;
     string nombre;
     string especie;
-    int edad;
     string tipoAlimentacion;
     string estadoSalud;
     string tipoHabitat;
-    string tipoDieta;
-    vector <animales*> vectorAcciones;
+    vector<string> vectorDieta;
+
 public:
     animales() = default;
-    animales(string tipoDieta);
-    animales(string nombreAnimal,string lugarAnimales);
-    animales(int idAnimal, string accionAnimal);
-    animales(int idAnimal, string tipoDieta, string tipoAlimentacion);
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
-             int edad, string tipoAalimentacion, string estadoSalud);
-
-    void agregarAccion(int idAnimal, string accionAnimal);
-    void accionesComer(int idAnimal, string accionAnimal);
-    void accionesDormir(int idAnimal, string accionAnimal);
-    void accionesJugar(int idAnimal, string accionAnimal);
-
-
+             int edad, string tipoAalimentacion, string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
     int getIdAnimal();
     string getEspecie();
     int getEdad();
@@ -55,11 +49,20 @@ public:
     string getNombre();
     string getEstadoSalud();
     string getHabitat();
-    string getTipoDieta();
-    string getAccionAnimal();
-    void setTipoDieta(string tipoDieta);
+    int getHoras();
+    int getEstadoActivo();
+    int getEstadoJugar();
+    int verificarComida(string comida);
+    void setEstadoActivo(int estadoActivo);
+    void setEstadoJugar(int estadoJugar);
+    void agregarComida(string comida);
+    void modificarDieta(string accion, string comida);
+    void mostrarDietasDisponoble(string dieta);
+    void mostrarDietaAnimal();
+    void jugar();
+    void comer();
+    void dormir();
 
-    //zoologico * getZoologico();
 
 };
 

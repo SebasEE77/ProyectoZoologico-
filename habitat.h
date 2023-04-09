@@ -26,12 +26,13 @@ public:
     habitat() = default;;
     habitat(string tipoHabitat);
     void mostrarInfo(int idAnimal);
-    void agregarZoologico(int id,string nombre, string especie, string tipoHabitat,
-                          int edad, string tipoAlimentacion, string estadoSalud);
-    int recorrerVectorAnimales(int idAnimal);
+    void agregarZoologico(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
+                          string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
+    void mostrarAnimales();
+    void dietaVectorAnimales(int idAnimal);
+    void interactuarAnimal(int idAnimal);
 
     string getHabitat();
-    vector<animales*>getVectorAnimales();
 };
 
 
