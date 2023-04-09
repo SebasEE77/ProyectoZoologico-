@@ -13,11 +13,35 @@ El programa en sí tiene un buen funcionamiento, en el main claramente hay un me
 #### Evidencias
 A continuación se mostrará como evidencia que el programa funciona correctamente.
 
-
-
-
-
-
-
-
-###### URL Diagrama UML:
+###### El programa comienza con este menú.
+![image](https://user-images.githubusercontent.com/105950433/230791096-4e44b598-5f60-4919-8f95-eedf58661d32.png)
+###### Para añadir un hábitat se selecciona la opción 1 y se escribe un hábitat de los 4 que se muestra en la pantalla. Se presenta el mensaje que se agrego.
+![image](https://user-images.githubusercontent.com/105950433/230791177-afe4e6fe-b419-4320-9f07-66c68000e01f.png)
+###### Para añadir un animal se selecciona la opción 2 y se escribe las características del animal. Se muestra si se agrego.
+![image](https://user-images.githubusercontent.com/105950433/230791358-437676ca-3f60-43ad-a01b-c8b9a4fa1686.png)
+###### Si quiere ver qué hábitats hay en el zoológico escoge la opción 3 y en el caso de animales sería la opción 4.
+![image](https://user-images.githubusercontent.com/105950433/230791466-a5c17f52-b28c-47a4-93d7-99f3f4de980c.png)
+###### Si se necesita ver la información de un animal en específico selecciona la opción 5, ingresando el hábitat y el id del animal que quiera ver. 
+![image](https://user-images.githubusercontent.com/105950433/230791533-a40790af-5c17-4ea5-9ed5-0feed8de6842.png)
+###### Será posible agregar una comida al animal con la opción 6 del menú, el cual tocará ingresar el hábitat y el id del animal, después, se presentará un sub-menú donde se escogerá la opción 2 para agregar una comida de una lista ya establecida.
+![image](https://user-images.githubusercontent.com/105950433/230791755-501e6620-c3cc-42f8-9bfe-378830a26509.png)
+###### Para ver la dieta del animal se hace lo mismo que antes, sino que en el sub-menú selecciona la opcioón 1.
+![image](https://user-images.githubusercontent.com/105950433/230792267-b0de8a8a-14a5-4a8c-a611-1451e1f61eda.png)
+###### Para modificar o eliminar una comida pasa los mismo que en el caso anterior, sin embargo, en el sub-menú se escoge la opción 3, luego escoge la opción 1 que es modificar u opción 2 que es eliminar, y se escribe la comida que quiera modificar o eliminar.
+###### Modificar:
+![image](https://user-images.githubusercontent.com/105950433/230792104-e9daff06-4ed2-4afb-9b77-08789bbc2f91.png)
+###### Resultado modificado:
+![image](https://user-images.githubusercontent.com/105950433/230792544-b7f5147b-5763-452a-b6d8-6d6762f5ab5a.png)
+###### Eliminar:
+![image](https://user-images.githubusercontent.com/105950433/230794121-835afca6-13fa-4f31-a592-99425d21e78c.png)
+###### Resultado eliminado:
+![image](https://user-images.githubusercontent.com/105950433/230792649-6e9803b3-59f6-444a-90aa-f77641c0cebf.png)
+###### Será posible tener interacciones con los animales del zoológico escribiendo la opción 7 del menú principal, el cual tocará ingresar el hábitat y el id del animal, después, se presentará un sub-menú donde se podrá escoger jugar, comer o dormir. 
+###### En el caso de jugar se elige la opción 1, donde habrá un pequeño juego con el animal. Solo el usuario tiene 3 intentos:
+![image](https://user-images.githubusercontent.com/105950433/230793022-4b861b0f-0a7c-4bf8-a4ef-fd862a973b70.png)
+###### En el caso de comer se elige la opción 2, donde será obligatorio agregar una comida a la dieta del animal, ya que aquí se le da una comida nueva relacionado a su dieta.
+![image](https://user-images.githubusercontent.com/105950433/230793270-3307afb6-cabc-4e5e-a7ae-20b130446f11.png)
+###### Finalmente, en el caso de dormr, se elige la opción 3 puesto que aquí se escribe la cantidad de horas exactas que debe dormir el animal de acuerdo a lo que el usuario escribió justamente cuando creó el animal. 
+![image](https://user-images.githubusercontent.com/105950433/230794215-87c90011-4a3c-44b7-812c-f2b39b765cc1.png)
+###### El usuario escribió 6 horas así que se pone las 6 horas:
+![image](https://user-images.githubusercontent.com/105950433/230793391-c38a8812-98d7-4546-8825-46d100d232d5.png)
