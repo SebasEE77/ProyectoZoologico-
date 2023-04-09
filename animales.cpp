@@ -23,14 +23,23 @@ animales::animales(int idAnimal, string nombre, string especie, string tipoHabit
 }
 
 // Constructor de animales para comenzar el zoologico, ubicado en el main
+<<<<<<< HEAD
 
+=======
+animales::animales(string nombreAnimal) {
+    this->nombreAnimal = nombreAnimal;
+}
+>>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
 // Constructor de la dieta de los animales para así especificamente saber su comida en relación a su tipo de alimentación
 // no va mientras
 
+<<<<<<< HEAD
 // Constructor de las acciones de los animales para así saber qué es lo que hacen o qué es lo que ya hicieron.
 
 
 
+=======
+>>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
 
 
 

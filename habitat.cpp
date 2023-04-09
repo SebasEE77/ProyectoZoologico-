@@ -61,8 +61,14 @@ void habitat::mostrarInfo(int idAnimal) {
     }
 }
 
+<<<<<<< HEAD
 void habitat::dietaVectorAnimales(int idAnimal) {
     int opcion = -1;
+=======
+// Este metodo se encarga especificamente de recorrer el vector animal para poder saber si, en este caso, el id
+// concuerda con que se pide en el main (metodos: quintaOpcion y cuartaOpcion)
+int habitat::recorrerVectorAnimales(int idAnimal) {
+>>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
     int bandera = 0;
     string comida;
     cout<< "Bienvenido al menu de dieta para los animales del Zoo\n";
@@ -120,6 +126,8 @@ void habitat::dietaVectorAnimales(int idAnimal) {
     }
 }
 
+
+// A partir de aqui estan los gets
 string habitat::getHabitat(){
     return tipoHabitat;
 }

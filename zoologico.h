@@ -25,6 +25,12 @@ class zoologico {
 
 protected:
     string nombreZoologico;
+<<<<<<< HEAD
+=======
+    string arregloCarnivoro[6] = {"carne", "pescado", "pechuga", "gusanos", "ave", "huevos"};
+    string arregloHerbivoro[6] = {"hierbas", "hojas", "savia", "raices", "semillas", "flores"};
+    string arregloOmnivoros[6] = {"frutas", "carne", "vegetales", "plantas", "pescado", "verduras"};
+>>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
     vector<habitat *> vectorHabitat;
 
 public:
