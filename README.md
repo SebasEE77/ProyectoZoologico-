@@ -33,13 +33,15 @@ A continuación se mostrará como evidencia que el programa funciona correctamen
 ###### Resultado modificado:
 ![image](https://user-images.githubusercontent.com/105950433/230792544-b7f5147b-5763-452a-b6d8-6d6762f5ab5a.png)
 ###### Eliminar:
-![image](https://user-images.githubusercontent.com/105950433/230792599-5edf2560-5b73-4fb0-b7a4-a4b78faef080.png)
+![image](https://user-images.githubusercontent.com/105950433/230794121-835afca6-13fa-4f31-a592-99425d21e78c.png)
 ###### Resultado eliminado:
 ![image](https://user-images.githubusercontent.com/105950433/230792649-6e9803b3-59f6-444a-90aa-f77641c0cebf.png)
 ###### Será posible tener interacciones con los animales del zoológico escribiendo la opción 7 del menú principal, el cual tocará ingresar el hábitat y el id del animal, después, se presentará un sub-menú donde se podrá escoger jugar, comer o dormir. 
-###### En el caso de jugar se elige la opción 1, donde habrá un pequeño juego con el animal:
+###### En el caso de jugar se elige la opción 1, donde habrá un pequeño juego con el animal. Solo el usuario tiene 3 intentos:
 ![image](https://user-images.githubusercontent.com/105950433/230793022-4b861b0f-0a7c-4bf8-a4ef-fd862a973b70.png)
 ###### En el caso de comer se elige la opción 2, donde será obligatorio agregar una comida a la dieta del animal, ya que aquí se le da una comida nueva relacionado a su dieta.
 ![image](https://user-images.githubusercontent.com/105950433/230793270-3307afb6-cabc-4e5e-a7ae-20b130446f11.png)
 ###### Finalmente, en el caso de dormr, se elige la opción 3 puesto que aquí se escribe la cantidad de horas exactas que debe dormir el animal de acuerdo a lo que el usuario escribió justamente cuando creó el animal. 
+![image](https://user-images.githubusercontent.com/105950433/230794215-87c90011-4a3c-44b7-812c-f2b39b765cc1.png)
+###### El usuario escribió 6 horas así que se pone las 6 horas:
 ![image](https://user-images.githubusercontent.com/105950433/230793391-c38a8812-98d7-4546-8825-46d100d232d5.png)
