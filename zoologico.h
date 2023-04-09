@@ -25,38 +25,20 @@ class zoologico {
 
 protected:
     string nombreZoologico;
-    string arregloCarnivoro[6] = {"carne", "pescado", "pechuga", "gusanos", "ave", "huevos"};
-    string arregloHerbivoro[6] = {"hierbas", "hojas", "savia", "raices", "semillas", "flores"};
-    string arregloOmnivoros[6] = {"frutas", "carne", "vegetales", "plantas", "pescado", "verduras"};
     vector<habitat *> vectorHabitat;
-    vector<animales *> vectorComida;
-    string tipoDieta;
 
 public:
     zoologico() = default;
 
     zoologico(string nombreZoologico);
 
-    void agregarZoologico(string tipoHabitat);
+    void agregarHabitat(string tipoHabitat);
 
-    void mostrarInfo();
-
-    void agregarComida(int idAnimal, string tipoDieta,string tipoAlimentacion);
-
-    string recorrerVectorHabitat(string tipoHabitat);
-
-    void mostrarArreglo(string tipoAlimentacion);
-
-    void mostrarInfo(int idAnimal);
-
-    void cambiarComida(int idAnimal, string modificar, string tipoDieta);
-
-    void eliminarComida(int idAnimal, string modificar);
-
-    vector<habitat*> getVectorHabitat();
-    vector<animales*> getVectorComida();
-    string getArregloCarnivoro();
-
+    void mostrarHabitats();
+    void ingresarAnimal(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
+                                 string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
+    void buscarAnimal(int idAnimal, string habitat, int opcion);
+    void mostrarAnimalesZoo();
 
 };
 
