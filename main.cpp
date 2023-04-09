@@ -205,7 +205,7 @@ void mostrarMenu(zoologico *pZoologico, habitat *pHabitat, animales *pAnimales) 
 }
 
 int main() {
-    zoologico *pZoologico = new zoologico("Zoologico");
+    zoologico *pZoologico = new zoologico("Zoologico de Cali");
     animales *pAnimal = new animales("Animales");
     habitat *pHabitat = new habitat("Habitats");
     mostrarMenu(pZoologico,pHabitat,pAnimal);
