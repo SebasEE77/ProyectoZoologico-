@@ -37,21 +37,10 @@ protected:
     string tipoAlimentacion;
     string estadoSalud;
     string tipoHabitat;
-<<<<<<< HEAD
     vector<string> vectorDieta;
 
 public:
     animales() = default;
-=======
-    string tipoDieta;
-    vector <animales*> vectorAcciones;
-    vector <string> vectorComida;
-public:
-    animales() = default;
-    animales(string nombreAnimal);
-    animales(int idAnimal, string accionAnimal);
-    animales(int idAnimal, string tipoDieta, string tipoAlimentacion);
->>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
     int getIdAnimal();

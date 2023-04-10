@@ -10,8 +10,8 @@ zoologico::zoologico(string nombreZoologico) {
     this->nombreZoologico = nombreZoologico;
 }
 
-// Este metodo agrega los habitats en el vector de habitats ya que mas adelante nos ayudara para saber si un animal
-// pertenece al habitat o no.
+// Este metodo de zoologico recibira el nombre del habitat a agregar dentro del vector habitats dentro de la clase zoologico. Dentro de la funcion
+// tambien se verificara si tal habitat ya se ha creado o no.
 void zoologico::agregarHabitat(string tipoHabitat) {
     vector<habitat *>::iterator itVectorHabitat;
     int bandera = 0;
@@ -28,6 +28,8 @@ void zoologico::agregarHabitat(string tipoHabitat) {
     }
 }
 
+// Este metodo dentro de zoologico recibira todos los datos del animal que se esta queriendo ingresar, primero verificando que su habitat exista y
+// posteriormente agregando al animal llamando al metodo agregarZoologico del habitat correspondiente
 void zoologico::ingresarAnimal(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
                              string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar){
     vector<habitat *>::iterator itVectorHabitat;
@@ -47,7 +49,9 @@ void zoologico::ingresarAnimal(int id, string nombre, string especie, string tip
 
 
 }
-
+// Este metodo recibe el id del animal , como el habitat en la que se encuentra y la opcion a realizar con dicho animal. Dentro de esta se recorre
+// el vector de habitat buscando el habitat especifica del animal y luego de acuerdo a la opcion especificada se llama el metodo correspondiente del
+// habitat, ya sea mostrarInfo, dietaVectorAnimales o interactuarAnimal
 void zoologico::buscarAnimal(int idAnimal, string aHabitat, int opcion) {
     vector<habitat*>::iterator itVectorHabitat;
     int bandera = 0;
@@ -67,13 +71,16 @@ void zoologico::buscarAnimal(int idAnimal, string aHabitat, int opcion) {
             bandera = 1;
         }
     }
+    if(bandera == 0){
+        cout << "No existe tal habitat, por lo tanto tampoco el animal" << endl;
+    }
 }
 
-// Muestra las habitats que tiene el vector
+// Este metodo recorre el vector de habitat dentro de zoologico, mostrando asi las habitats existentes
 void zoologico::mostrarHabitats() {
     vector<habitat *>::iterator itVectorHabitat;
     if(vectorHabitat.size() != 0){
-        cout << "\nLista de habitats del Zoologico:\n";
+        cout << "\tLista de habitats del Zoologico:\n";
         for (itVectorHabitat = this->vectorHabitat.begin();
              itVectorHabitat != this->vectorHabitat.end(); ++itVectorHabitat) {
             habitat *pHabitat = *itVectorHabitat;
@@ -86,6 +93,8 @@ void zoologico::mostrarHabitats() {
     }
 }
 
+// Este metodo recorre el vector de habitats para asi en cada una llamar al metodo de mostrarAnimales, mostrando de tal modo los animales dentro de
+// cada habitat existente
 void zoologico::mostrarAnimalesZoo(){
     vector<habitat *>::iterator itVectorHabitat;
     if(vectorHabitat.size() != 0){
@@ -102,8 +111,4 @@ void zoologico::mostrarAnimalesZoo(){
     }
 }
 
-// Desde aqui inician los gets
-vector<habitat*> zoologico::getVectorHabitat() {
-    return this->vectorHabitat;
-}
 

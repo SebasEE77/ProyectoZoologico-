@@ -8,8 +8,9 @@ habitat::habitat(string tipoHabitat){
     this->tipoHabitat = tipoHabitat;
 }
 
-// Este metodo agrega los animales al vector teniendo en cuenta las caracteristicas pedidas en el main. Aqui hay una bandera ya que
-// ayuda a para el ciclo del for cuando se debe y no lo recorra inecesariamente.
+// Este metodo agrega los animales al vectorAnimales teniendo en cuenta las caracteristicas recibidas en el metodo de ingresarAnimales
+//  de zoologico. Aqui hay una bandera ya que ayuda a para el ciclo del for cuando se debe y no lo recorra inecesariamente.
+
 void habitat::agregarZoologico(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
                           string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar) {
 
@@ -18,6 +19,8 @@ void habitat::agregarZoologico(int id, string nombre, string especie, string tip
         cout << "Se agrego un animal"<<endl;
 }
 
+// Este metodo lo que hace es listar los animales dentro del vectorAnimales mostrando su nombre y especie, ademas de que si no existe ningun animal
+// se muestra mensaje indicando que no existen.
 void habitat::mostrarAnimales() {
     if(this->vectorAnimales.size() != 0){
         cout << "La lista de animales dentro del habitat " << this->tipoHabitat << " son:" << endl;
@@ -35,8 +38,8 @@ void habitat::mostrarAnimales() {
         cout << "En este momento no hay animales dentro del habitat " << this->tipoHabitat << endl;
     }
 }
-// Solamente muestra la información general del animal. Uno puede decidir que información
-// ver de cuaqluier animal de acuerdo al id que tenga a gusto del usuario.
+// Este metodo se encarga de mostrar la informacion completa del animal de acuerdo al id pasado como parametro de la funcion. Aqui se busca
+// dentro del vectorAnimales del habitat que encuentra buscarAnimal de la clase zoologico.
 void habitat::mostrarInfo(int idAnimal) {
     int bandera = 0;
     vector<animales*>::iterator itVectorAnimales;
@@ -57,20 +60,16 @@ void habitat::mostrarInfo(int idAnimal) {
     if(bandera == 0){
         cout << "El animal no pertenece al zoologico"<<endl;
     }else{
-        cout << "Esta es la informacion del animal"<<endl;
+        cout << "\t ->Esta es la  ficha de informacion del animal<-"<<endl;
     }
 }
 
-<<<<<<< HEAD
+// Este metodo lo que se encarga es de buscar al animal dentro del vectorAnimales de acuerdo a su id para de tal modo gestionar la dieta del animal
+// ya sea agregar una comida, cambiarla por otra o eliminarla de su dieta.
 void habitat::dietaVectorAnimales(int idAnimal) {
-    int opcion = -1;
-=======
-// Este metodo se encarga especificamente de recorrer el vector animal para poder saber si, en este caso, el id
-// concuerda con que se pide en el main (metodos: quintaOpcion y cuartaOpcion)
-int habitat::recorrerVectorAnimales(int idAnimal) {
->>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
     int bandera = 0;
     string comida;
+    int opcion;
     cout<< "Bienvenido al menu de dieta para los animales del Zoo\n";
     cout <<"->[1]. Ver la dieta del animal\n";
     cout <<"->[2]. Agregar comida a la dieta del animal\n";
@@ -126,15 +125,12 @@ int habitat::recorrerVectorAnimales(int idAnimal) {
     }
 }
 
-
-// A partir de aqui estan los gets
-string habitat::getHabitat(){
-    return tipoHabitat;
-}
-
+// Este metodo se encargara de buscar al animal dentro del habitat de acuerdo al id mandado como parametro. Luego pedira al usuario que escoga
+// una opcion para interactuar con el animal ya sea jugar, dormir o comer.
 void habitat::interactuarAnimal(int idAnimal) {
     int bandera = 0;
     int opcion = -1;
+    string res;
     vector<animales *>::iterator itVectorAnimales;
     for (itVectorAnimales = this->vectorAnimales.begin();
          itVectorAnimales != this->vectorAnimales.end() and bandera == 0; ++itVectorAnimales) {
@@ -147,15 +143,50 @@ void habitat::interactuarAnimal(int idAnimal) {
                         cin >> opcion;
                     }while(opcion < 1 or opcion > 3);
                     if(opcion == 1){
-                        pAnimales->jugar();
+                        if(pAnimales->getEstadoActivo() == 0){
+                            cout << "El animal esta dormiendo en este momento" << endl;
+                        }
+                        else if(pAnimales->getEstadoJugar() == 1){
+                            cout << "El animal ya ha jugado. Desea jugar con él?";
+                            do{
+                                cin >> res;
+                            }while(res != "si" or res != "no");
+                            if(res == "si"){
+                                pAnimales->jugar();
+                            }
+                            else{
+                                pAnimales->setEstadoJugar(0);
+                            }
+                        }
+                        else{
+                            pAnimales->jugar();
+                        }
                     }
                     else if(opcion == 2){
-                        pAnimales->comer();
+                        if(pAnimales->getEstadoActivo() == 0){
+                            cout << "El animal esta dormiendo en este momento" << endl;
+                        }
+                        else {
+                            pAnimales->comer();
+                        }
                     }
                     else{
-                        pAnimales->dormir();
+                        if(pAnimales->getEstadoActivo() == 0){
+                            cout << "Se despertó el animal" << endl;
+                            pAnimales->setEstadoActivo(1);
+                        }
+                        else {
+                            pAnimales->dormir();
+                        }
                     }
                     bandera = 1;
                 }
     }
+    if(bandera == 0){
+        cout << "El animal no existe" << endl;
+    }
+}
+// Este es el get del nombre del habitat.
+string habitat::getHabitat(){
+    return tipoHabitat;
 }

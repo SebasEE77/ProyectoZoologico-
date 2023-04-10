@@ -22,28 +22,6 @@ animales::animales(int idAnimal, string nombre, string especie, string tipoHabit
     this->estadoJugar = estadoJugar;
 }
 
-// Constructor de animales para comenzar el zoologico, ubicado en el main
-<<<<<<< HEAD
-
-=======
-animales::animales(string nombreAnimal) {
-    this->nombreAnimal = nombreAnimal;
-}
->>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
-// Constructor de la dieta de los animales para así especificamente saber su comida en relación a su tipo de alimentación
-// no va mientras
-
-<<<<<<< HEAD
-// Constructor de las acciones de los animales para así saber qué es lo que hacen o qué es lo que ya hicieron.
-
-
-
-=======
->>>>>>> af80c4b4186192fbcd2e9f1edb26383c49918029
-
-
-
-
 // Desde aqui van los Gets y Sets
 int animales::getIdAnimal(){
     return idAnimal;
@@ -82,6 +60,7 @@ void animales::setEstadoJugar(int estadoJugar){
     this->estadoJugar = estadoJugar;
 }
 
+// Este metodo verificar que la comida que se pase como parametro este dentro de la opciones de dieta tambien de carnivoro, herbivoro y omnivoro.
 int animales::verificarComida(string comida){
     int bandera = 0;
     for(int i = 0; i < 6; i++){
@@ -91,13 +70,15 @@ int animales::verificarComida(string comida){
         }
     }
     return bandera;
-
 }
+//Este metodo se encarga solo de meter la comida dentro del vector comidas del animal.
 void animales::agregarComida(string comida){
     vectorDieta.push_back(comida);
     cout << "Se agregó la comida!\n";
 }
 
+//Este metodo se encarga de lo relacionado a cambiar la dieta del animal, por eso se recibe como parametro
+// una comida y esta accion que significa si se quiere cambiar o eliminar de la dieta.
 void animales::modificarDieta(string accion, string comida){
     string nuevaComida;
     int bandera = 0;
@@ -129,6 +110,7 @@ void animales::modificarDieta(string accion, string comida){
     }
 }
 
+// Este metodo se encarga de mostrar las comidas dentro del vectorComida del animal.
 void animales::mostrarDietaAnimal(){
     cout<<"La dieta del animal "<< this->nombre << " y de id " << this->idAnimal<< " es:" << endl;
     if(vectorDieta.size() != 0){
@@ -141,26 +123,27 @@ void animales::mostrarDietaAnimal(){
     }
 }
 
+// Este metodo se encarga de mostrar las posible comidas para el animal de acuerdo a su dieta.
 void animales::mostrarDietasDisponoble(string dieta) {
-    int i = 0;
     cout<<"\t->Para el animal esta disponible la siguiente dieta<-" << endl;
     if(dieta == "carnivoro" or dieta == "Carnivoro"){
-        for(i; i < 6;i++){
+        for(int i = 0; i < 6;i++){
             cout<<"-"<<arregloCarnivoro[i]<<endl;
         }
     }
     else if(dieta == "Herbivoro" or dieta == "herbivoro"){
-        for(i; i < 6;i++){
+        for(int i = 0; i < 6;i++){
             cout<<"-"<<arregloHerbivoro[i]<<endl;
         }
     }
     else{
-        for(i; i < 6;i++){
+        for(int i = 0; i < 6;i++){
             cout<<"-"<<arregloOmnivoros[i]<<endl;
         }
     }
 }
 
+//Este metodo es el que se encarga de que el usuario interactue con animal con un juego de adivinar un numero.
 void animales::jugar() {
     int num = -1;
     int intentos = 3;
@@ -179,7 +162,12 @@ void animales::jugar() {
             intentos--;
         }
     }
+    if(intentos == 0){
+        cout << "El animal esta triste, no ganaste" << endl;
+    }
 }
+
+// Este metodo se encarga de mandar al animal a dormir si se especifica el numero de horas exacta.
 void animales::dormir() {
     int horas = -1;
     do{
@@ -193,20 +181,24 @@ void animales::dormir() {
         }
         else{
             cout << "El animal ya duerme tranquilo\n";
+            setEstadoActivo(0);
         }
     }while(horas != this->horasDormir);
 }
+
+// Este metodo se encarga de darle de comer al animal.
 void animales::comer(){
     string comida;
     if(vectorDieta.size() != 0){
-        cout << "\tDieta del animal " << this->nombre << endl;
-        for(int i = 0; i < vectorDieta.size(); i++){
-            cout << vectorDieta[i] << endl;
-        }
+        mostrarDietaAnimal();
+     //   cout << "\tDieta del animal " << this->nombre << endl;
+       // for(int i = 0; i < vectorDieta.size(); i++){
+          //  cout << vectorDieta[i] << endl;
+        //}
         cout << "Ahora elige una comida para el animal: ";
         cin >> comida;
         cout << "-------------" << endl;
-        cout << "yummmmm " << this->nombre << " ha comida, te lo agredece mucho" << endl;
+        cout << "yummmmm " << this->nombre << " ha comido, te lo agredece mucho" << endl;
     }
     else{
         cout << "Lo sentimos pero no puedes alimentar al animal en este momento" << endl;
