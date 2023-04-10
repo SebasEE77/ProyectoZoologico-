@@ -8,9 +8,8 @@ habitat::habitat(string tipoHabitat){
     this->tipoHabitat = tipoHabitat;
 }
 
-// Este metodo agrega los animales al vectorAnimales teniendo en cuenta las caracteristicas recibidas en el metodo de ingresarAnimales
-//  de zoologico. Aqui hay una bandera ya que ayuda a para el ciclo del for cuando se debe y no lo recorra inecesariamente.
-
+// Este metodo agrega los animales al vectorAnimales teniendo en cuenta las características recibidas en el metodo de ingresarAnimales
+//  de zoologico.
 void habitat::agregarZoologico(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
                           string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar) {
 
@@ -19,8 +18,8 @@ void habitat::agregarZoologico(int id, string nombre, string especie, string tip
         cout << "Se agrego un animal"<<endl;
 }
 
-// Este metodo lo que hace es listar los animales dentro del vectorAnimales mostrando su nombre y especie, ademas de que si no existe ningun animal
-// se muestra mensaje indicando que no existen.
+// Este metodo lo que hace es listar los animales dentro del vectorAnimales mostrando su nombre y tipo de alimentación,
+// además, si no existe ningun animal se muestra el mensaje indicando que no existen.
 void habitat::mostrarAnimales() {
     if(this->vectorAnimales.size() != 0){
         cout << "La lista de animales dentro del habitat " << this->tipoHabitat << " son:" << endl;
@@ -38,7 +37,7 @@ void habitat::mostrarAnimales() {
         cout << "En este momento no hay animales dentro del habitat " << this->tipoHabitat << endl;
     }
 }
-// Este metodo se encarga de mostrar la informacion completa del animal de acuerdo al id pasado como parametro de la funcion. Aqui se busca
+// Este metodo se encarga de mostrar la información completa del animal de acuerdo al id pasado como parametro de la función. Aquí se busca
 // dentro del vectorAnimales del habitat que encuentra buscarAnimal de la clase zoologico.
 void habitat::mostrarInfo(int idAnimal) {
     int bandera = 0;
@@ -64,7 +63,7 @@ void habitat::mostrarInfo(int idAnimal) {
     }
 }
 
-// Este metodo lo que se encarga es de buscar al animal dentro del vectorAnimales de acuerdo a su id para de tal modo gestionar la dieta del animal
+// Este metodo lo que se encarga es de buscar al animal dentro del vectorAnimales de acuerdo a su id para de tal modo gestionar la dieta del animal,
 // ya sea agregar una comida, cambiarla por otra o eliminarla de su dieta.
 
 void habitat::dietaVectorAnimales(int idAnimal) {
@@ -77,7 +76,10 @@ void habitat::dietaVectorAnimales(int idAnimal) {
     cout <<"->[3]. Modificar/Eliminar comida de la dieta del animal\n";
     cout<<"Elige una opcion: ";
     do{
-        cin >> opcion;
+        cin >>opcion;
+        if(opcion > 3 or opcion < 1){
+            cout<<"Elige una opcion: ";
+        }
     }while(opcion > 3 or opcion < 1);
     vector<animales *>::iterator itVectorAnimales;
     for (itVectorAnimales = this->vectorAnimales.begin();
@@ -112,12 +114,14 @@ void habitat::dietaVectorAnimales(int idAnimal) {
                     cin >> accion;
                 }while(accion < 1 or accion > 2);
                 if(accion == 1){
-                    cout << "Ingrese la comida que quisiera modificar:" << endl;
+                    pAnimales->mostrarDietaAnimal();
+                    cout <<endl<<"Ingrese la comida que quisiera modificar:" << endl;
                     cin >> comida;
                     pAnimales->modificarDieta("modificar", comida);
                 }
                 else{
-                    cout << "Ingrese la comida que quisiera eiminar:" << endl;
+                    pAnimales->mostrarDietaAnimal();
+                    cout <<endl<< "Ingrese la comida que quisiera eiminar:" << endl;
                     cin >> comida;
                     pAnimales->modificarDieta("eliminar", comida);
                 }
@@ -130,8 +134,8 @@ void habitat::dietaVectorAnimales(int idAnimal) {
 }
 
 
-// Este metodo se encargara de buscar al animal dentro del habitat de acuerdo al id mandado como parametro. Luego pedira al usuario que escoga
-// una opcion para interactuar con el animal ya sea jugar, dormir o comer.
+// Este metodo se encargara de buscar al animal dentro del hábitat de acuerdo al id mandado como parametro. Luego pedira al usuario que escoga
+// una opcion para interactuar con el animal, ya sea jugar, dormir o comer.
 void habitat::interactuarAnimal(int idAnimal) {
     int bandera = 0;
     int opcion = -1;
@@ -177,7 +181,7 @@ void habitat::interactuarAnimal(int idAnimal) {
                     }
                     else{
                         if(pAnimales->getEstadoActivo() == 0){
-                            cout << "Se despertó el animal" << endl;
+                            cout << "Se desperto el animal" << endl;
                             pAnimales->setEstadoActivo(1);
                         }
                         else {

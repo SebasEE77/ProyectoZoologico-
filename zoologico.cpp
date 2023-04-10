@@ -5,13 +5,13 @@
 #include "zoologico.h"
 #include "animales.h"
 
-// Constructor del Zoologico para iniciar la simulación
+// Constructor del Zoológico para iniciar la simulación.
 zoologico::zoologico(string nombreZoologico) {
     this->nombreZoologico = nombreZoologico;
 }
 
-// Este metodo de zoologico recibira el nombre del habitat a agregar dentro del vector habitats dentro de la clase zoologico. Dentro de la funcion
-// tambien se verificara si tal habitat ya se ha creado o no.
+// Este metodo de zoológico recibira el nombre del hábitat donde se agregará al vector hábitat que esta dentro de la clase zoologico.
+// Dentro de la función, también se verificará si tal habitat existe o no.
 void zoologico::agregarHabitat(string tipoHabitat) {
     vector<habitat *>::iterator itVectorHabitat;
     int bandera = 0;
@@ -28,8 +28,9 @@ void zoologico::agregarHabitat(string tipoHabitat) {
     }
 }
 
-// Este metodo dentro de zoologico recibira todos los datos del animal que se esta queriendo ingresar, primero verificando que su habitat exista y
-// posteriormente agregando al animal llamando al metodo agregarZoologico del habitat correspondiente
+// Este metodo dentro de zoológico recibira todos los datos del animal que se esta queriendo ingresar, primero verificando que su hábitat exista y
+// posteriormente agregando al animal llamando al metodo agregarZoologico del hábitat correspondiente. Aquí hay una bandera ya que
+// ayuda a para el ciclo del for cuando se debe y asì no recorrerlo innecesariamente.
 void zoologico::ingresarAnimal(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
                              string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar){
     vector<habitat *>::iterator itVectorHabitat;
@@ -49,9 +50,9 @@ void zoologico::ingresarAnimal(int id, string nombre, string especie, string tip
 
 
 }
-// Este metodo recibe el id del animal , como el habitat en la que se encuentra y la opcion a realizar con dicho animal. Dentro de esta se recorre
-// el vector de habitat buscando el habitat especifica del animal y luego de acuerdo a la opcion especificada se llama el metodo correspondiente del
-// habitat, ya sea mostrarInfo, dietaVectorAnimales o interactuarAnimal
+// Este metodo recibe el id del animal, el hábitat y la opción a realizar con el animal. Dentro de esta se recorre
+// el vector de habitat buscando el hábitat especifica del animal, luego de acuerdo a la opción específicada se llama el metodo correspondiente del
+// hábitat, ya sea mostrarInfo, dietaVectorAnimales o interactuarAnimal.
 void zoologico::buscarAnimal(int idAnimal, string aHabitat, int opcion) {
     vector<habitat*>::iterator itVectorHabitat;
     int bandera = 0;
@@ -78,7 +79,7 @@ void zoologico::buscarAnimal(int idAnimal, string aHabitat, int opcion) {
     }
 }
 
-// Este metodo recorre el vector de habitat dentro de zoologico, mostrando asi las habitats existentes
+// Este metodo recorre el vector de hábitat dentro de zoológico, mostrando así las hábitats existentes.
 void zoologico::mostrarHabitats() {
     vector<habitat *>::iterator itVectorHabitat;
     if(vectorHabitat.size() != 0){

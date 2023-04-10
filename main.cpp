@@ -1,10 +1,8 @@
 #include <iostream>
 #include "zoologico.h"
 
-
-
-// Creamos una funcion que pide por consola el nombre del habitat a crear y verificamos que sea el correcto. Esta funcion se implementa
-// en el main debido a que va relacionada al case 1 del switch dentro de la funcion mostrarMenu.
+// Creamos una función que pide por consola el nombre del hábitat a crear y verificamos que sea el correcto. Esta función se implementa
+// en el main debido a que va relacionada al case 1 del switch dentro de la función mostrarMenu.
 void primeraOpcion(zoologico *pHabitat){
     string tipoHabitat;
     int bandera = 0;
@@ -24,7 +22,7 @@ void primeraOpcion(zoologico *pHabitat){
     pHabitat->agregarHabitat(tipoHabitat);
 }
 
-// Esta funcion se encargara de recibir los datos del animal a ingresar para asi llamar al metodo ingresarAnimal. Esta funcion se realiza dentro del main
+// Esta función se encargara de recibir los datos del animal a ingresar para así llamar al metodo ingresarAnimal. Esta función se realiza dentro del main
 // debido a que corresponde al case 2 del switch de mostrarMenu
 
 void segundaOpcion(zoologico *pZoologico){
@@ -38,25 +36,34 @@ void segundaOpcion(zoologico *pZoologico){
     getline(cin >> std::ws, especie);
     cout << "Escriba el habitat al que pertenece el animal: "<<endl;
     cin>>tipoHabitat;
-    cout << "Escriba la edad: "<<endl;
+    cout << "Escriba la edad, debe ser menor a 15 anios: "<<endl;
     do{
         cin>>edad;
+        if(edad < 0 or edad > 15){
+            cout<< "Escribe de nuevo la edad"<<endl;
+        }
     }while(edad < 0 or edad > 15);
     cout << "Escriba el tipo de alimentacion: "<<endl;
     do{
         getline(cin >> std::ws, tipoAlimentacion);
-    }while(tipoAlimentacion != "carnivoro" and tipoAlimentacion != "herbivoro" and tipoAlimentacion != "omnivoro" );
+        if(tipoAlimentacion != "carnivoro" and tipoAlimentacion != "herbivoro" and tipoAlimentacion != "omnivoro"){
+            cout<< "Escribe de nuevo el tipo de alimentacion"<<endl;
+        }
+    }while(tipoAlimentacion != "carnivoro" and tipoAlimentacion != "herbivoro" and tipoAlimentacion != "omnivoro");
     cout << "Escriba su estado de salud: "<<endl;
     getline(cin >> std::ws, estadoSalud);
-    cout << "Indique cuantas horar debe dormir el animal: " << endl;
+    cout << "Indique cuantas horar debe dormir el animal, debe ser entre 5 y 20 horas: " << endl;
     do{
         cin >> horasDormir;
-    }while(horasDormir > 5 and horasDormir < 20);
+        if(horasDormir < 5 or horasDormir > 20){
+            cout<< "Escribe de nuevo las horas"<<endl;
+        }
+    }while(horasDormir < 5 or horasDormir > 20);
     pZoologico->ingresarAnimal(id,nombre, especie, tipoHabitat, edad, tipoAlimentacion, estadoSalud, horasDormir, 1, 0);
 
 }
-// Esta funcion recibira el id y habitat del animal para llamar al metodo buscarAnimal y se pasa tambien como parametro a la opcion a realizar.
-// Esta funcion esta dentro del main porque corresponde a los case 5, 6 y 7 del mostrarMenu.
+// Esta función recibirá el id y hábitat del animal para llamar al metodo buscarAnimal y se pasa también como parametro a la opción a realizar.
+// Esta función esta dentro del main porque corresponde a los case 5, 6 y 7 del mostrarMenu.
 void opcionAuxiliar(zoologico *pZoologico, int opcion){
     int idAnimal;
     string aHabitat;
