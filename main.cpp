@@ -26,6 +26,7 @@ void primeraOpcion(zoologico *pHabitat){
 
 // Esta funcion se encargara de recibir los datos del animal a ingresar para asi llamar al metodo ingresarAnimal. Esta funcion se realiza dentro del main
 // debido a que corresponde al case 2 del switch de mostrarMenu
+
 void segundaOpcion(zoologico *pZoologico){
     string nombre, especie, tipoHabitat,tipoAlimentacion, estadoSalud;
     int edad,id, horasDormir;
@@ -65,9 +66,6 @@ void opcionAuxiliar(zoologico *pZoologico, int opcion){
     cin >> idAnimal;
     pZoologico->buscarAnimal(idAnimal, aHabitat, opcion);
 }
-
-
-
 // Se muestra el menu y se llaman los metodos.
 void mostrarMenu(zoologico *pZoologico) {
     int opc = 0;
@@ -79,7 +77,7 @@ void mostrarMenu(zoologico *pZoologico) {
         cout << "3. Ver lista de Habitats\n";
         cout << "4. Ver lista de animales del zoologico\n";
         cout << "5. Ver informacion sobre un animal\n";
-        cout << "6. Menú de comidas\n";
+        cout << "6. Menu de comidas\n";
         cout << "7. Interactuar con un animal\n";
         cout << "8. Salir\n" << endl;
         cin >> opc;
@@ -117,6 +115,7 @@ void mostrarMenu(zoologico *pZoologico) {
 }
 
 int main() {
-    zoologico *pZoologico = new zoologico("Zoologico");
+    zoologico *pZoologico = new zoologico("Zoologico de Cali");
     mostrarMenu(pZoologico);
+    return 0;
 }

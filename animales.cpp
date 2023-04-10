@@ -74,7 +74,7 @@ int animales::verificarComida(string comida){
 //Este metodo se encarga solo de meter la comida dentro del vector comidas del animal.
 void animales::agregarComida(string comida){
     vectorDieta.push_back(comida);
-    cout << "Se agregó la comida!\n";
+    cout << "Se agrego la comida!\n";
 }
 
 //Este metodo se encarga de lo relacionado a cambiar la dieta del animal, por eso se recibe como parametro
@@ -84,7 +84,7 @@ void animales::modificarDieta(string accion, string comida){
     int bandera = 0;
     vector<string>::iterator itComida;
     if(accion == "modificar" || accion == "Modificar"){
-        cout << "Ingrese la comida a cambiar por " << comida << ":";
+        cout << "Ingrese la comida a cambiar por " << comida << ": ";
         getline(cin >> std::ws, nuevaComida);
         for(int i = 0; i < vectorDieta.size() && bandera == 0; i++){
             if(vectorDieta[i] == comida) {
@@ -191,10 +191,6 @@ void animales::comer(){
     string comida;
     if(vectorDieta.size() != 0){
         mostrarDietaAnimal();
-     //   cout << "\tDieta del animal " << this->nombre << endl;
-       // for(int i = 0; i < vectorDieta.size(); i++){
-          //  cout << vectorDieta[i] << endl;
-        //}
         cout << "Ahora elige una comida para el animal: ";
         cin >> comida;
         cout << "-------------" << endl;

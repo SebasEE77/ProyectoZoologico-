@@ -69,6 +69,8 @@ void zoologico::buscarAnimal(int idAnimal, string aHabitat, int opcion) {
                 pHabitat->interactuarAnimal(idAnimal);
             }
             bandera = 1;
+        }else{
+            cout << "El habitat escrito no existe"<<endl;
         }
     }
     if(bandera == 0){
@@ -84,7 +86,7 @@ void zoologico::mostrarHabitats() {
         for (itVectorHabitat = this->vectorHabitat.begin();
              itVectorHabitat != this->vectorHabitat.end(); ++itVectorHabitat) {
             habitat *pHabitat = *itVectorHabitat;
-            cout << pHabitat->getHabitat() << endl;
+            cout << "Habitat: "<< pHabitat->getHabitat() << endl;
             cout <<endl;
         }
     }
@@ -110,5 +112,4 @@ void zoologico::mostrarAnimalesZoo(){
         cout << "EL zoologico no cuenta con Habitats por el momento, por lo tanto tampoco con animales" << endl;
     }
 }
-
 

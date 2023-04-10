@@ -43,6 +43,13 @@ public:
     animales() = default;
     animales(int idAnimal, string nombre,string especie, string tipoHabitat,
              int edad, string tipoAalimentacion, string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
+    void agregarComida(string comida);
+    void modificarDieta(string accion, string comida);
+    void mostrarDietasDisponoble(string dieta);
+    void mostrarDietaAnimal();
+    void jugar();
+    void comer();
+    void dormir();
     int getIdAnimal();
     string getEspecie();
     int getEdad();
@@ -56,13 +63,7 @@ public:
     int verificarComida(string comida);
     void setEstadoActivo(int estadoActivo);
     void setEstadoJugar(int estadoJugar);
-    void agregarComida(string comida);
-    void modificarDieta(string accion, string comida);
-    void mostrarDietasDisponoble(string dieta);
-    void mostrarDietaAnimal();
-    void jugar();
-    void comer();
-    void dormir();
+
 
 
 };

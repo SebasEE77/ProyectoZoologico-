@@ -29,7 +29,7 @@ void habitat::mostrarAnimales() {
             animales *pAnimales = *itVectorAnimales;
             cout << "-----------------------------------" << endl;
             cout << "Nombre: " << pAnimales->getNombre() << endl;
-            cout << "Especie: " << pAnimales->getEspecie() << endl;
+            cout << "Tipo de Alimentacion: " << pAnimales->getTipoAlimentacion() << endl;
             cout << "-----------------------------------";
         }
 
@@ -66,10 +66,11 @@ void habitat::mostrarInfo(int idAnimal) {
 
 // Este metodo lo que se encarga es de buscar al animal dentro del vectorAnimales de acuerdo a su id para de tal modo gestionar la dieta del animal
 // ya sea agregar una comida, cambiarla por otra o eliminarla de su dieta.
+
 void habitat::dietaVectorAnimales(int idAnimal) {
+    int opcion = -1;
     int bandera = 0;
     string comida;
-    int opcion;
     cout<< "Bienvenido al menu de dieta para los animales del Zoo\n";
     cout <<"->[1]. Ver la dieta del animal\n";
     cout <<"->[2]. Agregar comida a la dieta del animal\n";
@@ -95,6 +96,7 @@ void habitat::dietaVectorAnimales(int idAnimal) {
                 cout << "Elige una comida de la lista para el animal\n";
                 cin >> comida;
                 while(pAnimales->verificarComida(comida) == 0){
+                    cout << "Vuelva a escribir una comida de acuerdo a la lista"<<endl;
                     cin >> comida;
                 }
                 pAnimales->agregarComida(comida);
@@ -109,12 +111,14 @@ void habitat::dietaVectorAnimales(int idAnimal) {
                 do{
                     cin >> accion;
                 }while(accion < 1 or accion > 2);
-                cout << "Ingrese la comida:" << endl;
-                cin >> comida;
                 if(accion == 1){
+                    cout << "Ingrese la comida que quisiera modificar:" << endl;
+                    cin >> comida;
                     pAnimales->modificarDieta("modificar", comida);
                 }
                 else{
+                    cout << "Ingrese la comida que quisiera eiminar:" << endl;
+                    cin >> comida;
                     pAnimales->modificarDieta("eliminar", comida);
                 }
             }
@@ -124,6 +128,7 @@ void habitat::dietaVectorAnimales(int idAnimal) {
         cout << "El animal indicado no existe\n";
     }
 }
+
 
 // Este metodo se encargara de buscar al animal dentro del habitat de acuerdo al id mandado como parametro. Luego pedira al usuario que escoga
 // una opcion para interactuar con el animal ya sea jugar, dormir o comer.

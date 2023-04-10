@@ -29,14 +29,19 @@ protected:
 
 public:
     zoologico() = default;
+
     zoologico(string nombreZoologico);
+
     void agregarHabitat(string tipoHabitat);
+
     void mostrarHabitats();
+
     void ingresarAnimal(int id, string nombre, string especie, string tipoHabitat, int edad, string tipoAlimentacion,
-                                 string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
+                        string estadoSalud, int horasDormir, int estadoActivo, int estadoJugar);
+
     void buscarAnimal(int idAnimal, string habitat, int opcion);
+
     void mostrarAnimalesZoo();
 };
-
 
 #endif //ZOOLOGICO_ZOOLOGICO_H
